@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="185dp"
+    android:layout_height="match_parent"
+    android:layout_margin="15dp"
+    android:background="@drawable/img_redonda"
+    >
+
+    <android.support.v7.widget.CardView
+        android:layout_width="185dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/img_redonda"
+        >
+
+        <LinearLayout
+            android:layout_marginBottom="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:background="#fff"
+            android:id="@+id/id_produto"
+            android:layout_marginTop="10dp">
+
+            <LinearLayout
+                android:layout_marginLeft="05dp"
+                android:layout_marginRight="05dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                >
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:layout_margin="5dp"
+                    android:id="@+id/img_produto"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:layout_marginBottom="10dp"
+                    >
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="18dp"
+                        android:textColor="#006400"
+                        android:text="R$"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:textSize="18dp"
+                        android:textColor="#006400"
+                        android:textAlignment="center"
+                        android:id="@+id/preco_produto"/>
+
+
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="47dp"
+                    android:textColor="#000"
+                    android:textSize="18dp"
+                    android:layout_marginLeft="10dp"
+                    android:id="@+id/nome_produto"
+                    />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="#000"
+                        android:textSize="13dp"
+                        android:layout_marginLeft="10dp"
+                        android:id="@+id/marca_produto"
+                        />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Localize uma loja"
+                    android:gravity="center"
+                    android:textColor="#000"/>
+
+                <TextView
+                    android:layout_width="120dp"
+                    android:layout_height="30dp"
+                    android:text="  Confira Já"
+                    android:textSize="14dp"
+                    android:background="@drawable/btn_confira"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="10dp"
+                    android:drawableLeft="@drawable/ic_input_white_24dp"
+                    android:textColor="#FFF"
+                    android:layout_marginTop="10dp"
+                    android:id="@+id/btn_logar"
+                    android:layout_marginLeft="28dp"
+                    />
+
+
+
+
+
+
+
+            </LinearLayout>
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+
+
+
+</LinearLayout>

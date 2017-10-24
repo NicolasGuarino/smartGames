@@ -1,0 +1,223 @@
+
+
+#Menu {float:left;width:100%;height:44px;background-color:#202020;text-align:center;z-index:999}
+#Menu .DivCentralizar {display:inline-block;width:calc(100% - 30px);max-width:1170px;height:100%}
+#Menu .DivMenu {float:left;width:202px;height:100%;padding-left:63px;padding-right:30px;background:url('../imagens/ico_menu.png') no-repeat left center;background-position:30px;display:table;font-family:Open Sans,arial;font-size:14px;color:#FCB723;font-weight:600;border-right:1px solid rgba(255, 255, 255, 0.3);cursor:pointer;position:relative}
+#Menu .DivMenu:hover {background-color:#202020}
+#Menu .DivMenu:hover .DivSub2Menu {display:inline}
+#Menu .DivSub2Menu {float:left;position:absolute;top:44px;left:0px;background:url('../imagens/back_menu.png');width:296px;padding-bottom:15px;display:none;min-height:539px;z-index:500}
+#Menu .DivSub2MenuLinha {float:left;width:calc(100% - 30px);padding-left:15px;padding-right:15px}
+#Menu .DivSub2MenuLinha:hover {background-color:#000000;padding-bottom:1px;margin-bottom:-1px}
+#Menu .DivSub2MenuLinha:hover .DivSub3Menu {display:inline}
+#Menu .DivSub2MenuLinha:hover .DivSubMenuBanner {display:inline}
+#Menu .DivSub2MenuLinha:hover .DivSubMenuBanner2 {display:inline}
+#Menu .DivSub2MenuLinha:hover .DivSubMenuBanner3 {display:inline}
+#Menu .DivSub2MenuTexto {float:left;width:100%;text-align:left;font-family:Open Sans,arial;font-size:15px;color:#FFFFFF;line-height:14px;padding-top:14px;padding-bottom:14px;font-weight:400;background:url('../imagens/seta_menu.png') no-repeat right center}
+#Menu .DivSub2MenuTexto2 {border-top:0px}
+#Menu .DivSub3Menu {float:left;position:absolute;top:0px;left:296px;background-color:#000000;width:444px;padding-bottom:40px;padding-top:25px;font-weight:400;display:none;min-height:calc(100% - 236px);z-index:500}
+#Menu .DivSubMenuBanner {width:440px;height:383px;float:left;position:absolute;top:0px;left:740px;display:none;z-index:500;background:url('../imagens/banner_menu.png') no-repeat center center;background-color:#000000}
+#Menu .DivSubMenuBanner2 {float:right;width:884px;position:absolute;top:382px;left:296px;z-index:1099;border-top:1px solid #FFFFFF;display:none}
+#Menu .DivSubMenuBanner3 {float:left;width:884px;height:37px;position:absolute;top:352px;left:296px;z-index:1299;text-align:left;background:url('../imagens/banner_menu_destaque.png') no-repeat left center;display:none}
+#Menu .DivMenu2 {float:left;height:100%;display:table;padding: 0 30px;cursor:pointer;position:relative;border-left: 1px solid rgba(255, 255, 255, 0.2);}
+#Menu .DivMenu2:hover {background-color:#000000}
+#Menu .DivMenu2:hover .DivSubMenu {display:inline}
+#Menu .Menu2Url {color:#FFFFFF;text-decoration:none;font-family:Open Sans,arial;font-size:14px;text-transform:uppercase;font-weight:600}
+#Menu .DivSubMenu {float:left;position:absolute;top:44px;background-color:#000000;width:335px;padding-bottom:40px;padding-top:25px;display:none;z-index:500}
+#Menu .DivSubMenu2 {left:0px}
+#Menu .DivSubMenu3 {right:0px}
+#Menu .DivSubMenuLinha {float:left;width:calc(50% - 30px);padding-left:30px;}
+#Menu .DivSubMenuLinha:hover .DivSubMenuTexto {color:#FCB623;font-weight:bold}
+#Menu .DivSubMenuLinha:hover .SubMenuTextoUrl {color:#FCB623;font-weight:bold}
+
+#Menu .DivSubMenuLinha1 {float:left;width:calc(100% - 60px);padding-left:30px;padding-right:30px;}
+#Menu .DivSubMenuLinha1:hover .DivSubMenuTexto {color:#FCB623;font-weight:bold}
+#Menu .DivSubMenuLinha1:hover .SubMenuTextoUrl {color:#FCB623;font-weight:bold}
+
+#Menu .DivSubMenuTitulo {float:left;width:100%;text-align:left;font-family:Open Sans,arial;font-size:40px;color:#FFFFFF;font-weight:300;line-height:28px;padding-bottom:25px;}
+#Menu .DivSubMenuTexto {float:left;width:100%;text-align:left;font-family:Open Sans,arial;font-size:15px;color:#B0B0B0;line-height:14px;padding-top:15px;padding-bottom:15px;border-top:1px solid #343434;}
+#Menu .SubMenuTextoUrl {color:#B0B0B0;text-decoration:none}
+#Menu .SubMenuTextoUrl2 {color:#FFFFFF;text-decoration:none}
+#Menu .DivSubMenuLinha2 {float:left;width:calc(100% - 60px);padding-left:30px;padding-right:30px}
+
+#Menu .EspacoOfertaDia {width: 184px; /* 174px */ height: 30px; float: right; margin: 8px 8px 6px; position: relative;}
+#Menu .EspacoOfertaDia2 {width: 184px; /* 174px */ height: 56px; background: url("../imagens/oferta_dia.png") no-repeat center 20px; top: -20px; position: absolute; padding: 0 8px; cursor: pointer;}
+#Menu .EspacoOfertaDia:hover .EspacoOfertaDia2 {background: #FCB923 url("../imagens/oferta_dia2.png") no-repeat center 20px; top: -20px;}
+#Menu .EspacoOfertaDia:hover .DivOfertasProduto {display: inline;}
+#Menu .DivOfertasProduto {width: 366px; background: linear-gradient(to bottom, #FCB923, #F57E20); position: absolute; top: 36px; right: -16px; z-index: 9999; display: none;}
+#Menu .DivOfertasProdutoBorda {width: calc(100% - 44px); margin: 22px; float: left;}
+#Menu .DivBordaImagem {width: 100%; max-width: 322px; height: 100%; max-height: 322px; margin: 14px 0px 16px 0px; float: left; background: #FFFFFF; border-radius: 4px; border: 4px solid #F58020;}
+#Menu .DivBordaImagem img {opacity: 1; transition: opacity 0.25s;}
+#Menu .DivBordaImagem:hover img {opacity: 0.75; transition: opacity 0.25s;}
+#Menu .BotaoGarantaSeu {width: 244px; height: 41px; padding: 0px 0px 0px 15px; background: #FCB923 url("../imagens/ico_carrinho_garantir.png") 200px center no-repeat; border-radius: 4px; font-family: Open Sans, Arial, Helvetica; font-weight: 800; font-style: italic; font-size: 16px; text-align: left; color: #FFFFFF; cursor: pointer; border: 0;}
+#Menu .BotaoGarantaSeu:hover {background: #202020 url("../imagens/ico_carrinho_garantir_2.png") 200px center no-repeat; color: #FFFFFF;}
+#Menu .FotoImg {width: 100%; max-width: 302px; height: 100%; max-height: 302px; padding: 10px;}
+#Menu .DivAvisoTermino {width: 100%; float: left;}
+#Menu .SemProdutoOferta {width: 100%; float: left; font-family:Open Sans,arial;font-size:12px;color:#FFFFFF;}
+#Menu .DivDados {float:left;width:100%;}
+#Menu .DivNome {float:left;width:100%;font-family:Open Sans,arial;font-size:20px;color:#FFFFFF;text-align:center;}
+#Menu .DivValor {float:left;width:100%;margin-top:6px;font-family:Open Sans,arial;font-size:21px;color:#FFFFFF;font-weight:bold;text-align:center;}
+#Menu .DivFraseBoleto {float:left;width:100%;margin-top:3px;font-family:Open Sans,arial;font-size:12px;color:#FFFFFF;text-align:center;}
+#Menu .DivBotoes {float:left;width:100%;margin:10px 0px 0px 0px;text-align:center;}
+#Menu .DivCarrinho {float:left;cursor:pointer;margin-left:30px;width:135px}
+#Menu .DivCarrinho:hover .CarrinhoTextoUrl {color: #A42781;}
+#Menu .DivCarrinhoIco {float:left;width:40px;margin-top:3px;height:35px;background:url('../imagens/ico_carrinho.png')}
+#Menu .DivCarrinhoIco2 {float:right;text-align:center;width:18px;height:17px;font-family:Open Sans,arial;font-size:11px;color:#FFFFFF;font-weight:700;display:table}
+#Menu .DivCarrinhoTexto {float:left;margin-left:5px;margin-top:8px;font-family:Open Sans,arial;font-size:14px;color:#374C9F;font-weight:600;text-transform:uppercase;line-height:16px}
+#Menu .CarrinhoTextoUrl {color:#374C9F;text-decoration:none}
+
+
+#Menu2 {float:left;width:100%;height:44px;background-color:#202020;text-align:center;z-index:999; display:none}
+#Menu2 .DivCentralizar {display:inline-block;width:calc(100% - 30px);max-width:1170px;height:100%}
+#Menu2 .DivMenu {float:left;width:202px;height:100%;padding-left:63px;padding-right:30px;background:url('../imagens/ico_menu.png') no-repeat left center;background-position:30px;display:table;font-family:Open Sans,arial;font-size:14px;color:#FCB723;font-weight:600;border-right:1px solid rgba(255, 255, 255, 0.3);cursor:pointer;position:relative}
+
+#Menu2 .EspacoOfertaDia {width: 175px; height: 30px; float: right; margin: 8px 8px 6px; position: relative;}
+#Menu2 .EspacoOfertaDia2 {width: 175px; height: 56px; background: url("../imagens/oferta_dia.png") no-repeat center 20px; top: -20px; position: absolute; padding: 0 8px; cursor: pointer;}
+#Menu2 .EspacoOfertaDia:hover .EspacoOfertaDia2 {background: #FCB923 url("../imagens/oferta_dia2.png") no-repeat center 20px; top: -20px;}
+#Menu2 .EspacoOfertaDia:hover .DivOfertasProduto {display: inline;}
+#Menu2 .DivOfertasProduto {width: 366px; background: linear-gradient(to bottom, #FCB923, #F57E20); position: absolute; top: 36px; right: -23px; z-index: 9999; display: none;}
+#Menu2 .DivOfertasProdutoBorda {width: calc(100% - 44px); margin: 22px; float: left;}
+#Menu2 .DivBordaImagem {width: 100%; max-width: 322px; height: 100%; max-height: 322px; margin: 14px 0px 16px 0px; float: left; background: #FFFFFF; border-radius: 4px; border: 4px solid #F58020;}
+#Menu2 .DivBordaImagem img {opacity: 1; transition: opacity 0.25s;}
+#Menu2 .DivBordaImagem:hover img {opacity: 0.75; transition: opacity 0.25s;}
+#Menu2 .BotaoGarantaSeu {width: 244px; height: 41px; padding: 0px 0px 0px 15px; background: #FCB923 url("../imagens/ico_carrinho_garantir.png") 200px center no-repeat; border-radius: 4px; font-family: Open Sans, Arial, Helvetica; font-weight: 800; font-style: italic; font-size: 16px; text-align: left; color: #FFFFFF; cursor: pointer; border: 0;}
+#Menu2 .BotaoGarantaSeu:hover {background: #202020 url("../imagens/ico_carrinho_garantir_2.png") 200px center no-repeat; color: #FFFFFF;}
+#Menu2 .FotoImg {width: 100%; max-width: 302px; height: 100%; max-height: 302px; padding: 10px;}
+#Menu2 .DivAvisoTermino {width: 100%; float: left;}
+#Menu2 .SemProdutoOferta {width: 100%; float: left; font-family:Open Sans,arial;font-size:12px;color:#FFFFFF;}
+#Menu2 .DivDados {float:left;width:100%;}
+#Menu2 .DivNome {float:left;width:100%;font-family:Open Sans,arial;font-size:20px;color:#FFFFFF;text-align:center;}
+#Menu2 .DivValor {float:left;width:100%;margin-top:6px;font-family:Open Sans,arial;font-size:21px;color:#FFFFFF;font-weight:bold;text-align:center;}
+#Menu2 .DivFraseBoleto {float:left;width:100%;margin-top:3px;font-family:Open Sans,arial;font-size:12px;color:#FFFFFF;text-align:center;}
+#Menu2 .DivBotoes {float:left;width:100%;margin:10px 0px 0px 0px;text-align:center;}
+#Menu2 .DivCarrinho {float:left;cursor:pointer;margin-left:30px;width:135px}
+#Menu2 .DivCarrinho:hover .CarrinhoTextoUrl {color: #A42781;}
+#Menu2 .DivCarrinhoIco {float:left;width:40px;margin-top:3px;height:35px;background:url('../imagens/ico_carrinho.png')}
+#Menu2 .DivCarrinhoIco2 {float:right;text-align:center;width:18px;height:17px;font-family:Open Sans,arial;font-size:11px;color:#FFFFFF;font-weight:700;display:table}
+#Menu2 .DivCarrinhoTexto {float:left;margin-left:5px;margin-top:8px;font-family:Open Sans,arial;font-size:14px;color:#374C9F;font-weight:600;text-transform:uppercase;line-height:16px}
+#Menu2 .CarrinhoTextoUrl {color:#374C9F;text-decoration:none}
+
+#Banner {float:left; width:100%; text-align:center}
+#BannerMobile {float:left;width:100%; text-align:center; display:none}
+
+.DivValign {*position: absolute;top: 50%;display: table-cell;vertical-align:middle}
+
+#MenuFlutuante {float:left; position:fixed; width:100%; height: 100%; z-index: 99999;display:none}
+#MenuFlutuante .DivRolagem {float:left;width:250px;height:100%;overflow-y: scroll;overflow-x: hidden;}
+#MenuFlutuante .ParteEscura {float:right; width: calc(100% - 250px);/*  background:rgba(0, 0, 0, 0.40); */ height: 100%; cursor:pointer}
+#MenuFlutuante .ParteMenu {float:left; width:250px; background:#202020; color:#FFFFFF; height: 100%}
+#MenuFlutuante .DivMargemMenu {float:left; width:calc(100% - 30px); margin-left: 20px; margin-right: 10px; text-align:left}
+#MenuFlutuante .MenuTitulo {float:left; margin-top: 20px; color:#FFFFFF; font-weight: 700; margin-bottom: 20px; font-size: 17px;font-family:'Open Sans', sans-serif, 'Arial','verdana';line-height:30px;cursor:pointer}
+#MenuFlutuante .MenuItens {float:left; width: 100%; margin-bottom: 15px; font-size: 14px;font-family:'Open Sans', sans-serif, 'Arial','verdana';cursor:pointer}
+#MenuFlutuante .MenuItensCat {float:left; width: 100%; color:#FFFFFF; margin-bottom: 15px; font-size: 14px;font-family:'Open Sans', sans-serif, 'Arial','verdana';cursor:pointer;background:url('../imagens/seta_menu2.png') no-repeat right center}
+#MenuFlutuante .MenuItensSub {float:left; width: 100%; margin-bottom: 15px; font-size: 14px;font-family:'Open Sans', sans-serif, 'Arial','verdana'}
+#MenuFlutuante .MenuItensSub2 {float:left;width:100%;display:none}
+#MenuFlutuante .MenuItens2 {color:#E6DAE9}
+#MenuFlutuante .MenuItens a {color:#FFFFFF; text-decoration:none}
+#MenuFlutuante .MenuItens a:hover {text-decoration:underline}
+#MenuFlutuante .MenuItensCat a {color:#FFFFFF; text-decoration:none}
+#MenuFlutuante .MenuItensCat a:hover {text-decoration:underline}
+#MenuFlutuante .MenuItensSub a {color:#FFFFFF; text-decoration:none}
+#MenuFlutuante .MenuItensSub a:hover {text-decoration:underline}
+#MenuFlutuante .LinhaSeparacao {float:left; width:100%; border-top:1px solid #414141; border-bottom:0px solid #4e4e4e; margin-bottom:15px}
+#MenuFlutuante .MenuFinal {float:left;width:100%;margin-top:20px}
+
+#MenuFlutuanteCliente {float:left; position:fixed; width:100%; height: 100%; z-index: 99999;display:none}
+#MenuFlutuanteCliente .DivRolagem {float:left;width:250px;height:100%;overflow-y: scroll;overflow-x: hidden;}
+#MenuFlutuanteCliente .ParteEscura {float:left; width: calc(100% - 250px); background:rgba(0, 0, 0, 0.40); height: 100%; cursor:pointer}
+#MenuFlutuanteCliente .ParteMenu {float:right; width:250px; background:#f57e20; color:#FFFFFF; height: 100%}
+#MenuFlutuanteCliente .DivMargemMenu {float:left; width:calc(100% - 30px); margin-left: 20px; margin-right: 10px; text-align:left}
+#MenuFlutuanteCliente .MenuTitulo {float:left; color:#ffffff; margin-top: 20px; font-weight: 700; margin-bottom: 20px; font-size: 17px;font-family:'Open Sans', sans-serif, 'Arial','verdana';line-height:30px;cursor:pointer}
+#MenuFlutuanteCliente .MenuItens {float:left; width: 100%; margin-bottom: 15px; font-size: 14px;font-family:'Open Sans', sans-serif, 'Arial','verdana'}
+#MenuFlutuanteCliente .MenuItens2 {color:#E6DAE9}
+#MenuFlutuanteCliente .MenuItens a {color:#FFFFFF; text-decoration:none}
+#MenuFlutuanteCliente .MenuItens a:hover {text-decoration:underline}
+#MenuFlutuanteCliente .LinhaSeparacao {float:left; width:100%; border-top:1px solid #85569B; border-bottom:0px solid #9D72B1; margin-bottom:15px}
+#MenuFlutuanteCliente .MenuFinal {float:left;width:100%;margin-top:20px}
+
+#Corpo {float:left;width:100%;text-align:center;margin-top:35px}
+#Corpo .DivCentralizar {display:inline-block;width:calc(100% - 30px);max-width:1130px;height:100%;text-align:left;margin-left:15px;margin-right:15px}
+
+#Home {float:left;width:100%;text-align:center}
+#Home .DivCentralizar {display:inline-block;width:calc(100% - 30px);max-width:1105px;height:100%;text-align:left;margin-left:15px;margin-right:15px}
+#Home .DivBarra {float:left;width:100%;height:auto;min-height:45px;margin: 20px 0px 0px 0px; background:url('../imagens/back_barra.png') repeat-x center;text-align:left;}
+#Home .DivBarra2 {float:left;font-family:Open Sans,arial;font-size:24px;color:#242527;font-weight:700;background-color:#FFFFFF;padding-left:35px;padding-right:35px}
+#Home .DivBarra3 {font-weight:700}
+#Home .DivBarra4 {background-color:#FFFFFF}
+#Home .DivBarra5 {float: left; border-left: 1px solid #A4A4A4; height: 31px; padding: 0px 0px 0px 28px; line-height: 31px; font-size: 13px;}
+#Home .DivBannerListagem {float:left;width:100%;margin-top:40px;text-align:center;margin-bottom:50px}
+#Home .BarraLinhaMobile {float:left; width:100%; text-align:center; margin-top:15px; margin-bottom:0px; display:none}
+#Home .BarraLinhaMobileCentralizar {display:inline-block; width:100%; max-width:100px; text-align:center; border-top:1px solid #A4A4A4}
+
+#HomeList {float:left;width:calc(100% + 19px);margin-left:-19px;text-align:center}
+#HomeList .DivProdutoEsgotado {opacity: 0.60;}
+#HomeList .DivProduto {display:inline-block;width:238px;padding:7px;margin-top:17px;position:relative;border:1px solid #EEEEEE;margin-left:18px}
+#HomeList .DivProduto:hover {background: rgba(255,255,255,1);background: -moz-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 50%, rgba(245,245,245,1) 100%);background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(255,255,255,1)), color-stop(50%, rgba(255,255,255,1)), color-stop(100%, rgba(245,245,245,1)));background: -webkit-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 50%, rgba(245,245,245,1) 100%);background: -o-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 50%, rgba(245,245,245,1) 100%);background: -ms-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 50%, rgba(245,245,245,1) 100%);background: linear-gradient(to bottom, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 50%, rgba(245,245,245,1) 100%);filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#f5f5f5', GradientType=0 );-webkit-box-shadow: inset 0px 0px 0px 4px rgba(244,244,244,1);-moz-box-shadow: inset 0px 0px 0px 4px rgba(244,244,244,1);box-shadow: inset 0px 0px 0px 4px rgba(244,244,244,1);}
+#HomeList .DivFoto {float:left;width:100%;height:186px;text-align:center;cursor:pointer}
+#HomeList .FotoImg {max-width:218px;max-height:186px;border:0px}
+#HomeList .DivDados {float:left;width:100%;height:94px;cursor:pointer;text-align:left}
+#HomeList .DivNome {float:left;width:100%;margin-top:10px;font-family:Open Sans,arial;font-size:13px;color:#333333;line-height:18px;text-align:Center}
+#HomeList .DivValor {float:left;width:100%;margin-top:10px;font-family:Open Sans,arial;font-size:17px;color:green;font-weight:bold;line-height:16px;text-align:Center}
+#HomeList .DivFraseBoleto {float:left;width:100%;margin-top:3px;font-family:Open Sans,arial;font-size:12px;color:#555555;text-align:Center}
+#HomeList .DivEtiqueta {position:absolute;right:0px;top:0px;cursor:pointer}
+#HomeList .EtiquetaImg {}
+#HomeList .DivBotoes3 {background-image:url(http://www.izzygames.com.br/imagens/estrela.png);background-size: 20px; background-repeat: no-repeat;width:20px;height:20px;cursor:pointer}
+#HomeList .DivBotoes3:hover {background-image:url(http://www.izzygames.com.br/imagens/estrela_border.png)}
+#HomeList .DivBotoes4 {background-image:url(http://www.izzygames.com.br/imagens/estrela.png);background-size: 20px; background-repeat: no-repeat;width:20px;height:20px;cursor:pointer}
+#HomeList .DivBotoes4:hover {background-image:url(http://www.izzygames.com.br/imagens/estrela_border.png)}
+
+
+
+
+
+
+/*-------------------------------- RESPONSIVO -------------------------*/
+
+@media screen and (max-width: 1220px) {
+#HomeList {width: calc(100% - 80px); margin: 0 40px;}
+}
+
+@media screen and (max-width: 1210px) {
+#Menu .DivSub2Menu {min-height:373px}
+#Menu .DivSub3Menu {min-height:308px; padding-right:40px}
+#Menu .DivSub2MenuLinha:hover .DivSubMenuBanner {display:none}
+#Menu .DivSub2MenuLinha:hover .DivSubMenuBanner2 {display:none}
+#Menu .DivSub2MenuLinha:hover .DivSubMenuBanner3 {display:none}
+}
+
+@media screen and (max-width: 1172px) {
+#FormaPagamento #MetodosPagamento {text-align:center;}
+}
+
+@media screen and (max-width: 1170px) {
+#Topo .DivAtendimento {display:none}
+}
+
+@media screen and (max-width: 1165px) {
+#Menu .DivMenuEsconde5 {display:none}
+}
+
+
+
+
+@media screen and (max-width: 990px) {
+#Home .DivBarra2 {padding-left:0px}
+}
+
+@media screen and (max-width: 980px) {
+#Detalhes .DivDetalhes {width:100%; margin-right:0px; margin-left:0px}
+#Detalhes .DivFotos {width:100%}
+#Detalhes .BlocoGarantia {width:calc(100% - 265px)}
+#Detalhes .BlocoFrete {width:265px; text-align:right; margin-top:0px}
+#Detalhes .DivComprarAgora {width:calc(100% - 229px); margin-left:25px; text-align:right}
+#Detalhes .DivRedes {width:204px; text-align:left; margin-top:0px}
+#Detalhes .DivRedes1 {float:none; display:inline-block}
+#Detalhes .DivRedes2 {float:none; display:inline-block}
+#Detalhes .DivFotoG {width:calc(100% - 150px); height:450px}
+#Detalhes .FotoGImg {max-width:440px;max-height:440px;border:0px}
+#Detalhes .BlocoMiniaturas {width:130px; margin-left:0px; margin-top:-10px}
+#Detalhes .Miniaturas {height:104px; width:130px; margin-left:20px; margin-top:10px}
+#Detalhes .Miniaturas img {max-height:100px; max-width:100px}
+
+#MenuLateral {display:none}
+#Produtos .DivListagem {width:100%}
+}

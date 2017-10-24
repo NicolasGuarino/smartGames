@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_inicio"
+            android:icon="@drawable/ic_home_black_24dp"
+            android:title="Página Inicial" />
+        <item
+            android:id="@+id/nav_promocoes"
+            android:icon="@drawable/ic_menu_gallery"
+            android:title="Promoções" />
+        <item
+            android:id="@+id/nav_lancamentos"
+            android:icon="@drawable/ic_fiber_new_black_24dp"
+            android:title="Lançamentos" />
+
+    </group>
+
+    <item android:title="Outros">
+        <menu>
+
+            <item
+                android:id="@+id/nav_sair"
+                android:icon="@drawable/ic_exit_to_app_black_24dp"
+                android:title="Sair" />
+        </menu>
+    </item>
+
+</menu>

@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">SmartGames</string>
+
+    <string name="link">http://192.168.56.1/SmartGames/api_mobile/</string>
+    <string name="link_imagens">http://192.168.56.1/SmartGames/CMS/Arquivos/</string>
+
+    <string name="title_activity_home">Página Inicial</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Opçoes</string>
+</resources>
