@@ -1,6 +1,7 @@
 package smartgames.com.br;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -22,8 +23,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.AdapterView;
 import android.widget.AdapterViewFlipper;
 import android.widget.ArrayAdapter;
+import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -51,6 +54,8 @@ public class HomeActivity extends AppCompatActivity
     String parametros, url_foto = "", url="";
     SharedPreferences preferences;
 
+    int id_produto;
+
 
     TextView nome_cliente_nav, email_cliente_nav;
     String nome_cliente, email_cliente;
@@ -58,9 +63,12 @@ public class HomeActivity extends AppCompatActivity
 
     ViewPager view_pager;
     private final String TAG = "HomeActivity";
-    private RecyclerView recyclerView, recyclerView_ps4;
-    private RecyclerView.LayoutManager layoutManager, layoutManager_ps4;
-    private RecyclerView.Adapter recyclerAdapter, recyclerAdapter_ps4;
+
+    GridView grid_view_jogos;
+
+    ArrayAdapter<Produto> adapter;
+    List<Produto> list_produto = new ArrayList<>();
+
 
 
 
@@ -97,17 +105,31 @@ public class HomeActivity extends AppCompatActivity
         timer.scheduleAtFixedRate(new MyTimerTask(), 4000, 4000);
         //Finalizando SLIDER
 
-
+        carregarProdutos();
 
 
         // Criando Uma Recycler para colocar os produtos na home.
-        recyclerView = (RecyclerView) findViewById(R.id.recycler_home);
-        recyclerView.setHasFixedSize(true);
+        grid_view_jogos = (GridView) findViewById(R.id.grid_view_jogos);
 
-        layoutManager =  new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL,false);
-        recyclerView.setLayoutManager(layoutManager);
+        grid_view_jogos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-        requestJsonObject();
+                Produto produto = adapter.getItem(position);
+
+                id_produto = produto.getId_produto();
+
+                Intent detalhesProduto =  new Intent(HomeActivity.this, DetalhesProduto.class);
+
+                detalhesProduto.putExtra("id_produto", id_produto);
+
+
+                startActivity(detalhesProduto);
+
+            }
+        });
+
+
         // ------------------------------------------------------------
 
 
@@ -124,29 +146,7 @@ public class HomeActivity extends AppCompatActivity
         nome_cliente_nav.setText(nome_cliente);
     }
 
-    private void requestJsonObject() {
 
-        RequestQueue queue = Volley.newRequestQueue(this);
-        String url = this.getString(R.string.link)+"listar_xbox_home.php";
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-                Log.d(TAG, "Response " + response);
-                GsonBuilder builder = new GsonBuilder();
-                Gson mGson = builder.create();
-                List<Produto> posts = new ArrayList<Produto>();
-                posts = Arrays.asList(mGson.fromJson(response, Produto[].class));
-                recyclerAdapter = new RecyclerViewAdapter(HomeActivity.this, posts);
-                recyclerView.setAdapter(recyclerAdapter);
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                Log.d(TAG, "Error " + error.getMessage());
-            }
-        });
-        queue.add(stringRequest);
-    }
 
 
     @Override
@@ -189,8 +189,6 @@ public class HomeActivity extends AppCompatActivity
 
         if (id == R.id.nav_inicio) {
             // Handle the camera action
-        } else if (id == R.id.nav_promocoes) {
-
         } else if (id == R.id.nav_lancamentos) {
 
         } else if (id == R.id.nav_sair) {
@@ -224,4 +222,56 @@ public class HomeActivity extends AppCompatActivity
         }
     }
 
+
+    private void carregarProdutos() {
+
+        ConnectivityManager connMgr = (ConnectivityManager)this.getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
+        if (networkInfo != null && networkInfo.isConnected()){
+
+            url =  this.getString(R.string.link)+"listar_xbox_home.php";
+
+            parametros ="";
+
+
+            new HomeActivity.Preencher_produtos().execute(url);
+
+        }else{
+
+            Toast.makeText(this, "Nenhuma Conexao foi detectada", Toast.LENGTH_LONG).show();
+        }
+
+    }
+
+    public class Preencher_produtos extends AsyncTask<String, Void, String>{
+
+
+        @Override
+        protected String doInBackground(String... urls) {
+            return Conexao.postDados(urls[0], parametros);
+        }
+
+        @Override
+        protected void onPostExecute(String resultado) {
+            Gson gson = new Gson();
+            Produto[] produto = gson.fromJson(resultado, Produto[].class);
+
+
+
+
+            for(int i = 0; i < produto.length;i++){
+
+                list_produto.add(produto[i]);
+
+            }
+
+            adapter = new ProdutosHomeAdapter(
+                    context,
+                    R.layout.recycler_home,
+                    list_produto);
+
+
+            grid_view_jogos.setAdapter(adapter);
+        }
+    }
 }

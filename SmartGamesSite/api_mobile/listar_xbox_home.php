@@ -18,10 +18,10 @@
 
 		while($dados = $sql->fetch_array()){
 
-			$obj = array(" id_produto" => $dados['id_produto'],
+			$obj = array("id_produto" => $dados['id_produto'],
       "nome_produto" => $dados['nome_produto'],
       "preco_produto" => number_format($dados['preco'], 2, "," , "."),
-      "foto_produto" =>$dados['foto_produto'],
+      "imagem_produto" =>$dados['foto_produto'],
       "marca_modelo" => $dados['marca_modelo']);
 
 			$lista[] = $obj;

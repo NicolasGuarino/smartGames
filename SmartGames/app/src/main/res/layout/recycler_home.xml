@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="185dp"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:layout_margin="15dp"
     android:background="@drawable/img_redonda"
     >
 
-    <android.support.v7.widget.CardView
+    <LinearLayout
         android:layout_width="185dp"
         android:layout_height="wrap_content"
         android:background="@drawable/img_redonda"
+
         >
 
         <LinearLayout
@@ -64,13 +65,12 @@
                 </LinearLayout>
 
                 <TextView
+                    android:id="@+id/nome_produto"
                     android:layout_width="match_parent"
                     android:layout_height="47dp"
-                    android:textColor="#000"
-                    android:textSize="18dp"
                     android:layout_marginLeft="10dp"
-                    android:id="@+id/nome_produto"
-                    />
+                    android:textColor="#000"
+                    android:textSize="18dp" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -119,7 +119,7 @@
             </LinearLayout>
         </LinearLayout>
 
-    </android.support.v7.widget.CardView>
+    </LinearLayout>
 
 
 

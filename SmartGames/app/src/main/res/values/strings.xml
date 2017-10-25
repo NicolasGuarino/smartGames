@@ -1,8 +1,12 @@
 <resources>
     <string name="app_name">SmartGames</string>
 
-    <string name="link">http://192.168.56.1/SmartGames/api_mobile/</string>
-    <string name="link_imagens">http://192.168.56.1/SmartGames/CMS/Arquivos/</string>
+    <!--<string name="link">http://192.168.56.1/SmartGames/api_mobile/</string>
+    <string name="link_imagens">http://192.168.56.1/SmartGames/CMS/Arquivos/</string>-->
+
+
+    <string name="link">http://10.107.134.12/SmartGamesSite/api_mobile/</string>
+    <string name="link_imagens">http://10.107.134.12/SmartGamesSite/CMS/Arquivos/</string>
 
     <string name="title_activity_home">Página Inicial</string>
 
@@ -10,4 +14,6 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="action_settings">Opçoes</string>
+    <string name="title_activity_detalhes_produto"></string>
+
 </resources>

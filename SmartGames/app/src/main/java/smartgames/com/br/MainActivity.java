@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
 
         getAplication();
 
-       // preferences = PreferenceManager.getDefaultSharedPreferences(this);
+       preferences = PreferenceManager.getDefaultSharedPreferences(this);
     }
 
     private void getAplication() {
@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
         btn_logar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                /*ConnectivityManager connMgr = (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
+                ConnectivityManager connMgr = (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
                 NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
                 if (networkInfo != null && networkInfo.isConnected()){
 
@@ -84,9 +84,8 @@ public class MainActivity extends AppCompatActivity {
                                     }
                             ).show();
 
-                }*/
-                Intent intent = new Intent(context, HomeActivity.class);
-                startActivity(intent);
+                }
+
             }
         });
     }

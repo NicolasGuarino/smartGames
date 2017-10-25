@@ -6,14 +6,13 @@
             android:id="@+id/nav_inicio"
             android:icon="@drawable/ic_home_black_24dp"
             android:title="Página Inicial" />
-        <item
-            android:id="@+id/nav_promocoes"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="Promoções" />
+
         <item
             android:id="@+id/nav_lancamentos"
             android:icon="@drawable/ic_fiber_new_black_24dp"
             android:title="Lançamentos" />
+
+
 
     </group>
 

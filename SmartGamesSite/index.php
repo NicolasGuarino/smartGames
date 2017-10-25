@@ -74,8 +74,9 @@ session_start();
                         $preco = number_format($rs['preco'], 2, "," , ".");
 
 
+
                  ?>
-          				<div class="DivProduto ">
+          				<a href="detalhes_produto.php?id_produto=<?php echo($rs['id_produto']); ?>"><div class="DivProduto ">
           					<div class="DivFoto"><img src="CMS/Arquivos/<?php echo($rs['foto_produto']); ?>" class="FotoImg" alt="" title="Just Dance 2018 - PS4 (Pré-venda)">
                     </div>
           					<div class="DivDados">
@@ -83,7 +84,7 @@ session_start();
           						<div class="DivValor" >R$ <?php echo($preco); ?></div>
           						<div class="DivFraseBoleto">Localize uma loja</div>
           					</div>
-          				</div>
+          				</div></a>
                 <?php  } ?>
 
               </div>

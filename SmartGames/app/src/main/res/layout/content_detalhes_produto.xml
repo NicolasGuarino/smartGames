@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="smartgames.com.br.DetalhesProduto"
+    tools:showIn="@layout/activity_detalhes_produto">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Assassins Creed Origin (Xbox - One)"
+            android:textSize="20dp"
+            android:textColor="#161616"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Activision"
+            android:textSize="16dp"
+            android:gravity="left"
+            android:layout_marginLeft="15dp"
+            android:textColor="#1d1d1d"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_marginTop="25dp"
+            android:layout_height="wrap_content"
+            android:text="Encontre em uma de nossas lojas"
+            android:textSize="15dp"
+            android:drawableLeft="@drawable/ic_location_on_black_24dp"
+            android:textColor="#494949"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Descrição:"
+            android:textSize="15dp"
+            android:textColor="#000"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:text="awdihawoifhawihgaijdiawdiajdawbnfawdbawhddhawd wahdiawhdawhdiawhd awdhiwahdiaw wdh awdhawjdaw daw hdwa a uwdh awdh awdawdawdadh aw ."/>
+
+       <TextView
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:text="R$ 225,50"
+           android:layout_margin="15dp"
+           android:textSize="20dp"
+           android:textColor="#0da100"
+           />
+
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Encontre uma loja"
+            android:layout_gravity="center"
+            android:id="@+id/btn_encontrar_loja"/>
+
+
+    </LinearLayout>
+
+</android.support.v4.widget.NestedScrollView>
