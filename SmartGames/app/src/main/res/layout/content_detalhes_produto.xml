@@ -15,6 +15,7 @@
         android:orientation="vertical">
 
         <TextView
+            android:id="@+id/nome_detalhes_produto"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Assassins Creed Origin (Xbox - One)"
@@ -22,6 +23,7 @@
             android:textColor="#161616"/>
 
         <TextView
+            android:id="@+id/marca_detalhes_produto"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Activision"
@@ -49,27 +51,47 @@
             />
 
         <TextView
+            android:id="@+id/descricao_detalhes_produto"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
             android:text="awdihawoifhawihgaijdiawdiajdawbnfawdbawhddhawd wahdiawhdawhdiawhd awdhiwahdiaw wdh awdhawjdaw daw hdwa a uwdh awdh awdawdawdadh aw ."/>
 
-       <TextView
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
-           android:text="R$ 225,50"
-           android:layout_margin="15dp"
-           android:textSize="20dp"
-           android:textColor="#0da100"
-           />
-
-
-        <Button
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Encontre uma loja"
-            android:layout_gravity="center"
-            android:id="@+id/btn_encontrar_loja"/>
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/preco_detalhes_produto"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="R$ 225,50"
+                android:layout_margin="15dp"
+                android:textSize="20dp"
+                android:textColor="#0da100"
+                />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Encontre uma loja"
+                android:textColor="#fff"
+                android:layout_gravity="center"
+                android:drawableLeft="@drawable/ic_map_white_24dp"
+                android:id="@+id/btn_encontrar_loja"
+                android:background="#2e8b57"
+                android:layout_marginLeft="45dp"/>
+        </LinearLayout>
+
+
+
+        <com.google.android.gms.maps.MapView
+            android:layout_width="match_parent"
+            android:layout_height="160dp"
+            android:id="@+id/mapView" />
+
+
 
 
     </LinearLayout>
