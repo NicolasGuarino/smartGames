@@ -9,8 +9,15 @@
 
 	include_once 'conexao.php';
 
+	$id_usuario = $_POST['id_usuario'];
 
-	$sql = $dbcon->query("select * from view_produtos_xbox ");
+
+	$sql = $dbcon->query("select produto.*, mc.marca_modelo from tbl_produto as produto
+                                inner join tbl_usuario as usuario
+                                on usuario.id_tipo_produto = produto.id_tipo_produto
+                                inner join tbl_marca_modelo as mc
+                                on mc.id_marca_modelo = produto.id_marca_modelo
+                                where id_usuario=".$id_usuario);
 
 	if(mysqli_num_rows($sql) > 0){
 

@@ -15,6 +15,8 @@ if(isset($_POST['btnRegistrar']))
   $cpf = $_POST['cpf'];
   $senha = $_POST['senha'];
   $dt_nasc = $_POST['dt_nasc'];
+  $id_caracteristicas = $_POST['selectProduto'];
+  $login = $_POST['login'];
 
   $dt_nasc = explode("/", $dt_nasc);
 
@@ -25,8 +27,8 @@ if(isset($_POST['btnRegistrar']))
 	$dt_banco = $ano."-".$mes."-".$dia;
 
 
-  $sql="insert into tbl_usuario(nome_usuario, email_usuario, celular_usuario, dt_nasc, senha_usuario, cpf_usuario)";
-  $sql=$sql."values('".$nome."', '".$email."', '".$celular."', '".$dt_banco."', '".$senha."', '".$cpf."')";
+  $sql="insert into tbl_usuario(nome_usuario, email_usuario, celular_usuario, dt_nasc, senha_usuario, cpf_usuario, marca_preferida, login)";
+  $sql=$sql."values('".$nome."', '".$email."', '".$celular."', '".$dt_banco."', '".$senha."', '".$cpf."', '".$id_caracteristicas."', '".$login."')";
 
   mysql_query($sql);
 
@@ -55,12 +57,16 @@ if(isset($_POST['btnRegistrar']))
 		$sqlResult = mysql_query($sql);
 
 		if(mysql_num_rows ($sqlResult) > 0){
-			$_SESSION['cpf_cliente'] = $cpf;
-			$_SESSION['senha_cliente'] = $senha;
+      $_SESSION['id_usuario'] = $id_usuario;
+			$_SESSION['nome_usuario'] = $nome;
+      $_SESSION['senha_usuario'] = $senha;
 
 			if($consulta=mysql_fetch_array($sqlResult)){
 
-				header("location:index.php");
+        $id_usuario = $consulta['id_usuario'];
+        $nome = $consulta['nome_usuario'];
+
+				header("location:index.php?id_cliente=".$consulta['id_usuario']."&login=".$consulta['login']);
 			}
 
 		}else{
@@ -80,7 +86,7 @@ if(isset($_POST['btnRegistrar']))
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>TourDreams | Cadastro User</title>
+        <title>SmartGames | Login ou Cadastro</title>
 
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -115,7 +121,13 @@ if(isset($_POST['btnRegistrar']))
     <body>
 
 
-        <?php include ('menu.php'); ?>
+      <?php if (@$id_cliente){
+        include('menu.php');
+      } else {
+        include('menuNlogado.php');
+      }
+
+      ?>
 
         <div class="register-area" style="background-color: rgb(249, 249, 249);">
             <div class="container">
@@ -125,31 +137,51 @@ if(isset($_POST['btnRegistrar']))
                         <div class="col-md-12 col-xs-12 register-blocks">
                             <h2>Registrar</h2>
                             <form action="registrar_user.php" method="post">
+                              <div class="form-group">
+                                  <label>login</label>
+                                  <input required type="text" class="form-control" placeholder="Digite seu login" name="login">
+                              </div>
+
                                 <div class="form-group">
                                     <label>Nome</label>
                                     <input required type="text" class="form-control" placeholder="Digite seu nome" name="nome">
                                 </div>
-								<div class="form-group">
+								                <div class="form-group">
                                     <label>E-mail</label>
                                     <input required type="email" class="form-control" placeholder="Digite seu E-mail" name="email">
                                 </div>
-								<div class="form-group">
+								                <div class="form-group">
                                     <label>Celular</label>
                                     <input required type="text" class="form-control" placeholder="Digite seu celular" name="celular" onkeyup="mascaraCelular( this, mtel );"  onkeypress='return SomenteNumero(event)' maxlength="15">
                                 </div>
 
-								<div class="form-group">
-                                    <label>CPF</label>
-                                    <input required type="text" class="form-control" placeholder="Digite seu cpf" name="cpf"  onkeypress='mascaraMutuario(this,cpfCnpj)' onblur='clearTimeout()' onkeypress='return SomenteNumero(event)' maxlength="14">
+								                <div class="form-group">
+                                    <label>CPF (Somente Numeros)</label>
+                                    <input required type="text" class="form-control" placeholder="Digite seu cpf" name="cpf" onblur='clearTimeout()' onkeypress='return SomenteNumero(event)' maxlength="11">
                                 </div>
 
-								<div class="form-group">
+								                        <div class="form-group">
                                     <label>Senha</label>
                                     <input required type="password" class="form-control" name="senha"  placeholder="Digite sua senha">
                                 </div>
-                <div class="form-group">
+                                <div class="form-group">
                                     <label>Data de Nascimento</label>
                                     <input required type="text" class="form-control" placeholder="Digite sua data de nascimento"  onkeypress="mascaraData( this, event )" name="dt_nasc" maxlength="10" >
+                                </div>
+                                <div class="form-group">
+                                  <label>Selecione seu produto favorito</label>
+
+                  											<select name = "selectProduto">
+                  											<?php
+                  												$sql = "select * from tbl_tipo_produto";
+                  													$select = mysql_query($sql);
+                  														while($rs = mysql_fetch_array($select)){
+                  													?>
+                  														<option required class="form-control" value="<?php echo($rs['id_tipo_produto']);?>"><?php echo($rs['tipo_produto']);?></option>
+                  													<?php
+                  													}
+                  											?>
+                  											</select>
                                 </div>
 
                                 <div class="text-center">
@@ -164,10 +196,10 @@ if(isset($_POST['btnRegistrar']))
                     <div class="box-for overflow">
                         <div class="col-md-12 col-xs-12 login-blocks">
                             <h2>Entrar</h2>
-                            <form action="index.php" method="post">
+                            <form action="registrar_user.php" name="form_login" method="post">
                                <div class="form-group">
                                     <label>CPF</label>
-                                    <input type="text" class="form-control" placeholder="Digite seu cpf" name="cpf"  onkeypress='mascaraMutuario(this,cpfCnpj)' onblur='clearTimeout()' onkeypress='return SomenteNumero(event)' maxlength="14">
+                                    <input type="text" class="form-control" placeholder="Digite seu cpf" name="cpf"   onblur='clearTimeout()' onkeypress='return SomenteNumero(event)' maxlength="11">
                                 </div>
                                 <div class="form-group">
                                     <label>Senha</label>

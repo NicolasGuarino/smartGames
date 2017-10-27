@@ -40,14 +40,13 @@
 
 
         <div class="collapse navbar-collapse yamm" id="navigation">
-          <div class="button navbar-right">
-              <a class="navbar-brand" href="index.php"><button class="navbar-btn nav-button wow bounceInRight login" data-wow-delay="0.45s">Sair</button></a>
-          </div>
+            <div class="button navbar-right">
+                <a class="navbar-brand" href="registrar_user.php"><button class="navbar-btn nav-button wow bounceInRight login" data-wow-delay="0.45s">Login</button></a>
+            </div>
             <ul class="main-nav nav navbar-nav navbar-right">
-              <li class="wow fadeInDown" data-wow-delay="0.1s"><a class="" href="index.php?id_cliente=<?php echo ($id_cliente); ?>&login=<?php echo ($nome); ?>">Home</a></li>
-              <li class="wow fadeInDown" data-wow-delay="0.5s"><a href="sobre.php?id_cliente=<?php echo ($id_cliente); ?>&login=<?php echo ($nome); ?>">Sobre Nós</a></li>
-              <li class="wow fadeInDown" data-wow-delay="0.5s"><a href="fale_conosco.php?id_cliente=<?php echo ($id_cliente); ?>&login=<?php echo ($nome); ?>">Fale Conosco</a></li>
-              <li class="wow fadeInDown" data-wow-delay="0.5s"><a href="#">Bem Vindo, <?php echo($_SESSION['login']); ?></a></li>
+                <li class="wow fadeInDown" data-wow-delay="0.1s"><a class="" href="index.php">Home</a></li>
+                <li class="wow fadeInDown" data-wow-delay="0.5s"><a href="sobre.php">Sobre Nós</a></li>
+                <li class="wow fadeInDown" data-wow-delay="0.5s"><a href="fale_conosco.php">Fale Conosco</a></li>
             </ul>
         </div>
     </div>

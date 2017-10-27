@@ -1,11 +1,17 @@
-<?php include ('conexao_banco.php'); ?>
+<?php
+
+include ('conexao_banco.php');
+@$id_cliente = $_GET['id_cliente'];
+@$nome = $_GET['login'];
+
+?>
 
 <!DOCTYPE html>
 <html class="no-js">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>TourDreams | Sobre</title>
+        <title>SmartGames | Sobre</title>
 
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -18,7 +24,13 @@
     <body>
 
 
-      <?php include('menu.php') ?>
+      <?php if ($id_cliente){
+        include('menu.php');
+      } else {
+        include('menuNlogado.php');
+      }
+
+      ?>
 
 
 

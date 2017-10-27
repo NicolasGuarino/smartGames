@@ -1,12 +1,16 @@
 <resources>
     <string name="app_name">SmartGames</string>
 
-    <string name="link">http://192.168.56.1/SmartGamesSite/api_mobile/</string>
-    <string name="link_imagens">http://192.168.56.1/SmartGamesSite/CMS/Arquivos/</string>
+    <!--<string name="link">http://192.168.56.1/SmartGamesSite/api_mobile/</string>
+    <string name="link_imagens">http://192.168.56.1/SmartGamesSite/CMS/Arquivos/</string>-->
 
+    <string name="link">http://IP Local AQUI/SmartGamesSite/api_mobile</string>
+    <string name="link_imagens">http://IP Local AQUI/SmartGamesSite/CMS/Arquivos/</string>
 
     <!--<string name="link">http://10.107.134.12/SmartGamesSite/api_mobile/</string>
     <string name="link_imagens">http://10.107.134.12/SmartGamesSite/CMS/Arquivos/</string>-->
+
+    <string name="google_android_map_api_key"> AIzaSyCNQZ_BT5XG5VtTdLrirt2ZIt4-KsavvDM </string>
 
     <string name="title_activity_home">Página Inicial</string>
 

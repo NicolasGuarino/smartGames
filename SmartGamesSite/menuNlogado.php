@@ -1,16 +1,4 @@
-<?php
-
-if(!isset($_SESSION)){
-    session_start();
-}
-
-include("conexao_banco.php");
-@$id_cliente = $_GET['id_cliente'];
-@$nome = $_GET['login'];
-
-$_SESSION['nome_usuario'];
-
-?>
+<?php include("conexao_banco.php"); ?>
 
 <div class="header-connect">
     <div class="container">
@@ -48,23 +36,18 @@ $_SESSION['nome_usuario'];
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="index.php?id_cliente=<?php echo ($id_cliente); ?>&login=<?php echo ($nome); ?>"><img src="assets/img/smart_games.png" alt=""></a>
+            <a class="navbar-brand" href="index.php"><img src="assets/img/smart_games.png" alt=""></a>
         </div>
 
 
         <div class="collapse navbar-collapse yamm" id="navigation">
-
+          <div class="button navbar-right">
+              <a class="navbar-brand" href="registrar_user.php"><button class="navbar-btn nav-button wow bounceInRight login" data-wow-delay="0.45s">Login</button></a>
+          </div>
             <ul class="main-nav nav navbar-nav navbar-right">
-              <div class="button navbar-right">
-                  <a class="navbar-brand" href="index.php"><button class="navbar-btn nav-button wow bounceInRight login" data-wow-delay="0.45s">Sair</button></a>
-              </div>
-
-                <li class="wow fadeInDown" data-wow-delay="0.1s"><a class="" href="index.php?id_cliente=<?php echo ($id_cliente); ?>&login=<?php echo ($nome); ?>">Home</a></li>
-                <li class="wow fadeInDown" data-wow-delay="0.5s"><a href="sobre.php?id_cliente=<?php echo ($id_cliente); ?>&login=<?php echo ($nome); ?>">Sobre Nós</a></li>
-                <li class="wow fadeInDown" data-wow-delay="0.5s"><a href="fale_conosco.php?id_cliente=<?php echo ($id_cliente); ?>&login=<?php echo ($nome); ?>">Fale Conosco</a></li>
-                <li class="wow fadeInDown" data-wow-delay="0.5s"><a href="#">Bem Vindo, <?php echo($_SESSION['login']); ?></a></li>
-
-
+                <li class="wow fadeInDown" data-wow-delay="0.1s"><a class="" href="index.php">Home</a></li>
+                <li class="wow fadeInDown" data-wow-delay="0.5s"><a href="sobre.php">Sobre Nós</a></li>
+                <li class="wow fadeInDown" data-wow-delay="0.5s"><a href="fale_conosco.php">Fale Conosco</a></li>
             </ul>
         </div>
     </div>
@@ -88,13 +71,13 @@ $_SESSION['nome_usuario'];
 
             <div class="DivSubMenuLinha1" onclick="window.open(&#39;#;);">
               <div class="DivSubMenuTexto">
-                <a href="pesquisar_jogos.php?pesquisa=ps4&id_cliente=<?php echo($id_cliente)?>" class="SubMenuTextoUrl"><?php echo($rs['nome_categoria']); ?></a>
+                <a href="pesquisar_jogos.php?pesquisa=ps4" class="SubMenuTextoUrl"><?php echo($rs['nome_categoria']); ?></a>
               </div>
             </div>
           <?php } ?>
         </div>
       <span class="DivValign" onclick="window.open(&#39;#;);">
-        <a href="pesquisar_jogos.php?pesquisa=ps4&id_cliente=<?php echo($id_cliente)?>" class="Menu2Url">
+        <a href="pesquisar_jogos.php?pesquisa=ps4" class="Menu2Url">
           <img src="CMS/foto_menu/A2M.png" alt="Playstation 4">
         </a>
       </span>
@@ -117,13 +100,13 @@ $_SESSION['nome_usuario'];
 
             <div class="DivSubMenuLinha1" onclick="window.open(&#39;#;);">
               <div class="DivSubMenuTexto">
-                <a href="pesquisar_jogos.php?pesquisa=xbox&id_cliente=<?php echo($id_cliente)?>" class="SubMenuTextoUrl"><?php echo($rs['nome_categoria']); ?></a>
+                <a href="pesquisar_jogos.php?pesquisa=xbox" class="SubMenuTextoUrl"><?php echo($rs['nome_categoria']); ?></a>
               </div>
             </div>
           <?php } ?>
         </div>
       <span class="DivValign" onclick="window.open(&#39;#);">
-        <a href="pesquisar_jogos.php?pesquisa=xbox&id_cliente=<?php echo($id_cliente)?>" class="Menu2Url">
+        <a href="pesquisar_jogos.php?pesquisa=xbox" class="Menu2Url">
           <img src="CMS/foto_menu/bKb.png" alt="Xbox One">
         </a>
       </span>
@@ -143,13 +126,13 @@ $_SESSION['nome_usuario'];
 
             <div class="DivSubMenuLinha1" onclick="window.open(&#39;#;);">
               <div class="DivSubMenuTexto">
-                <a href="pesquisar_jogos.php?pesquisa=3ds&id_cliente=<?php echo($id_cliente)?>" class="SubMenuTextoUrl"><?php echo($rs['nome_categoria']); ?></a>
+                <a href="pesquisar_jogos.php?pesquisa=3ds" class="SubMenuTextoUrl"><?php echo($rs['nome_categoria']); ?></a>
               </div>
             </div>
           <?php } ?>
         </div>
       <span class="DivValign" onclick="window.open(&#39;#);">
-        <a href="pesquisar_jogos.php?pesquisa=3ds&id_cliente=<?php echo($id_cliente)?>" class="Menu2Url">
+        <a href="pesquisar_jogos.php?pesquisa=3ds" class="Menu2Url">
           <img src="CMS/foto_menu/DKB.png" alt="Nintendo 3DS"></a></span>
     </div>
 
@@ -169,13 +152,13 @@ $_SESSION['nome_usuario'];
 
               <div class="DivSubMenuLinha1" onclick="window.open(&#39;#;);">
                 <div class="DivSubMenuTexto">
-                  <a href="pesquisar_jogos.php?pesquisa=switch&id_cliente=<?php echo($id_cliente)?>" class="SubMenuTextoUrl"><?php echo($rs['nome_categoria']); ?></a>
+                  <a href="pesquisar_jogos.php?pesquisa=switch" class="SubMenuTextoUrl"><?php echo($rs['nome_categoria']); ?></a>
                 </div>
               </div>
             <?php } ?>
         </div>
       <span class="DivValign" onclick="window.open(&#39;#);">
-        <a href="pesquisar_jogos.php?pesquisa=switch&id_cliente=<?php echo($id_cliente)?>" class="Menu2Url">
+        <a href="pesquisar_jogos.php?pesquisa=switch" class="Menu2Url">
           <img src="CMS/foto_menu/Bvo.png" alt="Switch">
         </a>
       </span>
@@ -195,14 +178,14 @@ $_SESSION['nome_usuario'];
 
             <div class="DivSubMenuLinha1" onclick="window.open(&#39;#;);">
               <div class="DivSubMenuTexto">
-                <a href="pesquisar_jogos.php?pesquisa=wiiu&id_cliente=<?php echo($id_cliente)?>" class="SubMenuTextoUrl"><?php echo($rs['nome_categoria']); ?></a>
+                <a href="pesquisar_jogos.php?pesquisa=wiiu" class="SubMenuTextoUrl"><?php echo($rs['nome_categoria']); ?></a>
               </div>
             </div>
           <?php } ?>
 
         </div>
       <span class="DivValign" onclick="window.open(&#39;#);">
-        <a href="pesquisar_jogos.php?pesquisa=wiiu&id_cliente=<?php echo($id_cliente)?>" class="Menu2Url">
+        <a href="pesquisar_jogos.php?pesquisa=wiiu" class="Menu2Url">
           <img src="CMS/foto_menu/hSt.png" alt="Nintendo Wiiu">
         </a>
       </span>

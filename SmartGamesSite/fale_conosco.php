@@ -1,6 +1,8 @@
 <?php
 
 	session_start();
+	@$id_cliente = $_GET['id_cliente'];
+	@$nome = $_GET['login'];
 
 	include("conexao_banco.php");
 
@@ -14,7 +16,7 @@
 		$sql =$sql."values('".$nome."' , '".$email."' , '".$celular."' , '".$observacao."')";
 
 		mysql_query($sql);
-		header('location:index.php');
+		header('location:index.php?id_cliente='.$id_cliente);
 	}
 
 ?>
@@ -35,7 +37,13 @@
     </head>
     <body>
 
-			<?php include('menu_fale.php'); ?>
+			<?php if (@$id_cliente){
+        include('menu_fale.php');
+      } else {
+        include('menu_faleNlogado.php');
+      }
+
+      ?>
 
 
         <div class="content-area recent-property padding-top-40" style="background-color: #FFF;">
@@ -63,7 +71,7 @@
 
                             <hr>
                             <h2>Contato</h2>
-                            <form action="fale_conosco.php" name="frmfale" method="post">
+                            <form action="fale_conosco.php?id_cliente=<?php echo($id_cliente); ?>" name="frmfale" method="post">
                                 <div class="row">
                                     <div class="col-sm-6">
                                         <div class="form-group">

@@ -4,6 +4,8 @@ session_start();
 
 include("conexao_banco.php");
 
+@$id_cliente = ['id_cliente'];
+
 
 ?>
 
@@ -12,7 +14,7 @@ include("conexao_banco.php");
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>TourDreams | Destinos</title>
+        <title>SmartGames | Pesquisar</title>
 
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -26,54 +28,20 @@ include("conexao_banco.php");
 
 
 
-        <?php include ('menu.php'); ?>
+      <?php if ($id_cliente){
+        include('menu.php');
+      } else {
+        include('menuNlogado.php');
+      }
+
+      ?>
 
 
         <div class="properties-area recent-property" style="background-color: #FFF;">
             <div class="container">
                 <div class="row">
 
-                <div class="col-md-3 p0 padding-top-40">
-                    <div class="blog-asside-right pr0">
-                        <div class="panel panel-default sidebar-menu wow fadeInRight animated" >
-                            <div class="panel-heading">
-                                <h3 class="panel-title">Filtrar</h3>
-                            </div>
-                            <div class="panel-body search-widget">
-                                <form action="" class=" form-inline">
-                                    <fieldset>
-                                        <div class="row">
-                                            <div class="col-xs-12">
-                                                <input type="text" class="form-control" placeholder="Pesquisa">
-                                            </div>
-                                        </div>
-                                    </fieldset>
-                									<div class="panel-heading">
-                										<h3 class="panel-title">Preço Desejado</h3>
-                									</div>
 
-                									<div class="form-group">
-                										<select id="basic" class="selectpicker show-tick form-control">
-                											<option>R$25,00 - R$100,99</option>
-                											<option>R$101,00 - R$150,99</option>
-                											<option>R$151,00 - R$200,99</option>
-                											<option>R$201,00 - R$250,99</option>
-                										</select>
-                									</div>
-
-
-                                  <fieldset>
-                                      <div class="row">
-                                          <div class="col-xs-12">
-                                              <input class="button btn largesearch-btn" value="Filtrar" type="submit" name="btn_filtrar">
-                                          </div>
-                                      </div>
-                                  </fieldset>
-                                </form>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
 
                 <div class="col-md-9  pr0 padding-top-40 properties-page">
                     <div class="col-md-12 clear">
@@ -82,25 +50,28 @@ include("conexao_banco.php");
                 						<?php
                 						@$pesquisa = (string)$_GET['pesquisa'];
 
-                						$sql = "select * from view_produto where status = 'Aprovado'";
-
-                						if($pesquisa !=''){
-                							$sql = $sql . "and estado LIKE'%$pesquisa%'";
-                						}
-
+                						$sql = "select * from view_produtos where
+                                    nome_produto LIKE '%$pesquisa%' or
+                                    descricao LIKE '%$pesquisa%' or
+                                    marca_modelo LIKE '%$pesquisa%' or
+                                    nome_categoria LIKE '%$pesquisa%' or
+                                    tipo_produto LIKE '%$pesquisa%'
+                                    order by rand()
+                            ";
                 						$select = mysql_query($sql) or die (mysql_error());
                 						while($rs = mysql_fetch_array($select)){
+                              $preco = number_format($rs['preco'], 2, "," , ".");
                 						?>
                             <div class="col-sm-6 col-md-4 p0">
                               <div class="box-two proerty-item">
                                   <div class="item-thumb">
-                                      <a href="detalhes_produto.php?id_produto=<?php echo $rs['id_produto'];?>"><?php echo "<img src='Parceiro/Arquivos/".$rs['foto_principal']."'>"?></a>
+                                      <a href="detalhes_produto.php?id_produto=<?php echo $rs['id_produto'];?>"><?php echo "<img src='CMS/Arquivos/".$rs['foto_produto']."'>"?></a>
                                   </div>
                                   <div class="item-entry overflow">
-  											              <h5><a href="detalhes_produto.php?id_produto=<?php echo $rs['id_produto'];?>" ><?php echo($rs['nome_fantasia']);?></a></h5>
+  											              <h5><a href="detalhes_produto.php?id_produto=<?php echo $rs['id_produto'];?>" ><?php echo($rs['nome_produto']);?></a></h5>
   											              <div class="dot-hr"></div>
-  											              <span class="pull-left"><i class="fa fa-binoculars"></i>  <b>Milhas :</b> <?php echo($rs['qtd_milhas']);?> </span>
-  											              <span class="proerty-price pull-right">R$ <?php echo number_format($preco_diaria, 2, ',', '');?></span>
+
+  											              <span class="proerty-price pull-right">R$ <?php echo($preco); ?></span>
 									                </div>
 
               										<div class="vote">

@@ -4,7 +4,25 @@ session_start();
 
 include("conexao_banco.php");
 
+@$id_cliente = $_GET['id_cliente'];
+
+
+
+
 ?>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+
+<script>
+var $doc = $('html, body');
+$('.scrollSuave').click(function() {
+    $doc.animate({
+        scrollTop: $( $.attr(this, 'href') ).offset().top
+    }, 500);
+    return false;
+});
+</script>
+
 
 <!DOCTYPE html>
 <html class="no-js">
@@ -17,6 +35,42 @@ include("conexao_banco.php");
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <link rel='stylesheet' type='text/css'>
+        <?php
+        if (isset ($_GET['id_produto'])) {
+          $id_produto = (int)$_GET['id_produto'];
+
+          $sql = "select * from view_localizacao where id_produto =".$id_produto;
+          $select = mysql_query($sql);
+
+          while($rs = mysql_fetch_array($select)){
+            $latitude=$rs['latitude'];
+            $longitude=$rs['longitude'];
+
+          }}
+          ?>
+        <script>
+            function initMap() {
+              var uluru = {lat: <?php echo($latitude); ?>, lng: <?php echo($longitude); ?>};
+              var map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 10,
+                center: uluru
+              });
+              var marker = new google.maps.Marker({
+                position: uluru,
+                map: map
+              });
+            }
+        </script>
+
+
+
+        <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBltwkaO77qw3wnvauzjdhkh6utwVVbKiI&callback=initMap">
+        </script>
+
+
+
+
 
 
 
@@ -27,7 +81,13 @@ include("conexao_banco.php");
 
 
 
-        <?php include('menu.php') ?>
+      <?php if (@$id_cliente){
+        include('menu.php');
+      } else {
+        include('menuNlogado.php');
+      }
+
+      ?>
 
         <div class="content-area single-property" style="background-color: #FCFCFC;">&nbsp;
             <div class="container">
@@ -35,136 +95,54 @@ include("conexao_banco.php");
             <div class="clearfix padding-top-40" >
 
                 <div class="col-md-8 single-property-content prp-style-2">
-                        <div class="">
-                            <div class="row">
-                                <div class="light-slide-item">
-                                    <div class="clearfix">
-                                        <ul id="image-gallery" class="gallery list-unstyled cS-hidden">
-                        										<?php
-                        										if (isset ($_GET['id_produto'])) {
-                        												$id_produto = (int)$_GET['id_produto'];
-                        												$sql = "select * from tbl_produto where id_produto =".$id_produto;
-                        												$select = mysql_query($sql);
-                        												while($rs = mysql_fetch_array($select)){
+                    <div class="">
+                        <div class="row">
+                            <div class="light-slide-item">
+                                <div class="clearfix">
+                                    <ul id="image-gallery" class="gallery list-unstyled cS-hidden">
+                    										<?php
+                    										if (isset ($_GET['id_produto'])) {
+                    												$id_produto = (int)$_GET['id_produto'];
+                    												$sql = "select * from tbl_produto where id_produto =".$id_produto;
+                    												$select = mysql_query($sql);
+                    												while($rs = mysql_fetch_array($select)){
 
-                        										?>
-                        											<?php echo "<li data-thumb='CMS/Arquivos/".$rs['foto_produto']."'>"?>
-                                                                        <?php echo "<img src='CMS/Arquivos/".$rs['foto_produto']."'>"?>
-                                                                    </li>
-                        										<?php
-                        											}
-                        										}
-                        										?>
-                                        </ul>
-                                    </div>
+                    										?>
+                    											<?php echo "<li data-thumb='CMS/Arquivos/".$rs['foto_produto']."'>"?>
+                                                                    <?php echo "<img src='CMS/Arquivos/".$rs['foto_produto']."'>"?>
+                                                                </li>
+                    										<?php
+                    											}
+                    										}
+                    										?>
+                                    </ul>
                                 </div>
                             </div>
-
-						<div class="single-property-wrapper">
-                            <div class="single-property-header">
-                                <h1 class="property-title pull-left">Características</h1>
-                            </div>
-
-                            <div class="property-meta entry-meta clearfix ">
-
-								<?php
-								if (isset ($_GET['id_produto'])) {
-									$id_produto = (int)$_GET['id_produto'];
-									$sql = "select * from view_caracteristica where id_produto =".$id_produto;
-									$select = mysql_query($sql);
-									while($rs = mysql_fetch_array($select)){
-								?>
-                                <div class="col-xs-3 col-sm-3 col-md-3 p-b-15">
-                                    <span class="property-info-icon icon-garage">
-                                        <i class="fa <?php echo($rs['foto_caracteristica']);?>"></i>
-                                    </span>
-                                    <span class="property-info-entry">
-                                        <span class="property-info-label"><?php echo($rs['nome_caracteristica']);?></span>
-                                    </span>
-                                </div>
-								<?php
-									}
-								}
-								?>
-
-
-                            </div>
-
-                            <div class="single-property-wrapper">
-
-                                <div class="section">
-                                    <h4 class="s-property-title">Descrição</h4>
-									<?php
-									if (isset ($_GET['id_produto'])) {
-										$id_produto = (int)$_GET['id_produto'];
-										$sql = "select * from view_produto where id_produto =".$id_produto;
-										$select = mysql_query($sql);
-										while($rs = mysql_fetch_array($select)){
-									?>
-                                    <div class="s-property-content">
-                                        <p><?php echo($rs['descricao_produto']);?></p>
-                                    </div>
-									<?php
-										}
-									}
-									?>
-                                </div>
-
-
-                            </div>
-
-
-
                         </div>
 
+				             <div class="single-property-wrapper">
+                        <div class="single-property-header">
+                            <h1 class="property-title pull-left">Visualizar Mapa</h1>
+                        </div>
 
-						<section id="comments" class="comments wow fadeInRight animated">
-                            <h4 class="text-uppercase wow fadeInLeft animated">2 Comentários</h4>
+                        <div class="property-meta entry-meta clearfix ">
 
+                            <div class="col-xs-3 col-sm-3 col-md-3 p-b-15">
 
-                            <div class="row comment">
-                                <div class="col-sm-3 col-md-2 text-center-xs">
-                                    <p>
-                                        <img src="assets/img/client-face1.png" class="img-responsive img-circle" alt="">
-                                    </p>
-                                </div>
-                                <div class="col-sm-9 col-md-10">
-                                    <h5 class="text-uppercase">Nome Pessoa</h5>
-                                    <p class="posted"><i class="fa fa-clock-o"></i> 31 de Agosto de 2017 às 14:30</p>
-                                    <p>Lorem Ipsum é simplesmente uma simulação de texto da indústria tipográfica e de impressos, e vem sendo utilizado desde o século XVI, quando um impressor desconhecido pegou uma bandeja de tipos e os embaralhou para fazer um livro de modelos de tipos.</p>
-                                </div>
+                                <span class="property-info-entry">
+                                  <div id="map"></div>
+                                </span>
                             </div>
 
-
-
-                            <div class="row comment last">
-
-                                <div class="col-sm-3 col-md-2 text-center-xs">
-                                    <p>
-                                        <img src="assets/img/client-face1.png" class="img-responsive img-circle" alt="">
-                                    </p>
-                                </div>
-
-                                <div class="col-sm-9 col-md-10">
-                                   <h5 class="text-uppercase">Nome Pessoa</h5>
-                                    <p class="posted"><i class="fa fa-clock-o"></i> 31 de Agosto de 2017 às 14:30</p>
-                                    <p>Lorem Ipsum é simplesmente uma simulação de texto da indústria tipográfica e de impressos, e vem sendo utilizado desde o século XVI, quando um impressor desconhecido pegou uma bandeja de tipos e os embaralhou para fazer um livro de modelos de tipos.</p>
-                                </div>
-
-                            </div>
-
-                        </section>
-
-
+                        </div>
 
 
                     </div>
 
 
 
-
-
                 </div>
+              </div>
 
 				<div class="col-md-4 p0">
             <aside class="sidebar sidebar-property blog-asside-right property-style2">
@@ -179,36 +157,46 @@ include("conexao_banco.php");
                     				while($rs = mysql_fetch_array($select)){
                     					$preco=$rs['preco'];
                     			?>
-                                                <div class="single-property-header">
-                                                    <h1 class="property-title"><?php echo($rs['nome_produto']);?></h1>
-                                                    <span class="property-price">R$ <?php echo number_format($preco, 2, ',', '');?></span>
-                                                </div>
+                              <div class="single-property-header">
+                                  <h1 class="property-title"><?php echo($rs['nome_produto']);?></h1>
+                                  <span class="property-price">R$ <?php echo number_format($preco, 2, ',', '');?></span>
+                              </div>
+
+                              <div class="single-property-header">
+                                  <h1 class="property-descricao">Descrição</h1>
+                                  <span class="property-descricao_sub"><?php echo($rs['descricao']);?></span>
+                              </div>
+
+                              <div class="col-sm-12 text-center">
+                                  <a href="#map" class="scrollSuave">
+                                    <button type="submit" class="btn btn-primary"><i class="fa fa-map" name="btn_enviar_mensagem"></i> Veja Como Chegar</button>
+                                  </a>
+                              </div>
+
+
+
                     			<?php
                     				}
                     			}
                     			?>
+
+
+
                         </div>
                     </div>
                 </div>
               </aside>
           </div>
-
-
-
-
-
 			</div>
             </div>
         </div>
 
         <!-- Footer area-->
-        <div class="footer-area">
+    <div class="footer-area">
 
-            <div class=" footer">
-                <div class="container">
-                    <div class="row">
-
-
+      <div class=" footer">
+        <div class="container">
+          <div class="row">
 					</div>
 
 				</div>
@@ -231,21 +219,21 @@ include("conexao_banco.php");
         <script src="assets/js/main.js"></script>
 
         <script>
-                            $(document).ready(function () {
+          $(document).ready(function () {
 
-                                $('#image-gallery').lightSlider({
-                                    gallery: true,
-                                    item: 1,
-                                    thumbItem: 9,
-                                    slideMargin: 0,
-                                    speed: 500,
-                                    auto: true,
-                                    loop: true,
-                                    onSliderLoad: function () {
-                                        $('#image-gallery').removeClass('cS-hidden');
-                                    }
-                                });
-                            });
+              $('#image-gallery').lightSlider({
+                  gallery: true,
+                  item: 1,
+                  thumbItem: 9,
+                  slideMargin: 0,
+                  speed: 500,
+                  auto: true,
+                  loop: true,
+                  onSliderLoad: function () {
+                      $('#image-gallery').removeClass('cS-hidden');
+                  }
+              });
+          });
         </script>
 
         <script>
@@ -265,6 +253,9 @@ include("conexao_banco.php");
       		}
 
       		</script>
+
+
+
 
     </body>
 </html>

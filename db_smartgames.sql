@@ -106,7 +106,7 @@ CREATE TABLE `tbl_categoria` (
 
 LOCK TABLES `tbl_categoria` WRITE;
 /*!40000 ALTER TABLE `tbl_categoria` DISABLE KEYS */;
-INSERT INTO `tbl_categoria` VALUES (5,'JOGOS'),(6,'CONSOLES');
+INSERT INTO `tbl_categoria` VALUES (5,'JOGOS');
 /*!40000 ALTER TABLE `tbl_categoria` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -123,10 +123,12 @@ CREATE TABLE `tbl_cep` (
   `id_cidade` int(11) NOT NULL,
   `bairro` varchar(65) NOT NULL,
   `rua` varchar(65) NOT NULL,
+  `latitude` varchar(45) NOT NULL,
+  `longitude` varchar(45) NOT NULL,
   PRIMARY KEY (`id_cep`),
   KEY `id_cep-cidade_idx` (`id_cidade`),
   CONSTRAINT `id_cep-cidade` FOREIGN KEY (`id_cidade`) REFERENCES `tbl_cidade` (`id_cidade`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -135,7 +137,7 @@ CREATE TABLE `tbl_cep` (
 
 LOCK TABLES `tbl_cep` WRITE;
 /*!40000 ALTER TABLE `tbl_cep` DISABLE KEYS */;
-INSERT INTO `tbl_cep` VALUES (1,'06665-080',1,'COHAB II','Av Luiz Belli'),(2,'06665-072',1,'Centro','Av presidente Vargas');
+INSERT INTO `tbl_cep` VALUES (1,'06665-080',1,'COHAB II','Av Luiz Belli','-23.5582768','-46.9501521'),(2,'06665-072',1,'Centro','Av presidente Vargas','-23.5393751','-46.9407897'),(3,'065084-045',7,'Alphaville Comercial','Alameda Madeira','-23.4957573','-46.8530624');
 /*!40000 ALTER TABLE `tbl_cep` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -153,7 +155,7 @@ CREATE TABLE `tbl_cidade` (
   PRIMARY KEY (`id_cidade`),
   KEY `id_cidade_estado_idx` (`id_estado`),
   CONSTRAINT `id_cidade_estado` FOREIGN KEY (`id_estado`) REFERENCES `tbl_estado` (`id_estado`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -162,7 +164,7 @@ CREATE TABLE `tbl_cidade` (
 
 LOCK TABLES `tbl_cidade` WRITE;
 /*!40000 ALTER TABLE `tbl_cidade` DISABLE KEYS */;
-INSERT INTO `tbl_cidade` VALUES (1,'Itapevi',1),(2,'Valença',2),(3,'São Paulo',1),(4,'Rio de Janeiro',2),(5,'Cotia',1),(6,'Higienópolis',1);
+INSERT INTO `tbl_cidade` VALUES (1,'Itapevi',1),(2,'Valença',2),(3,'São Paulo',1),(4,'Rio de Janeiro',2),(5,'Cotia',1),(6,'Higienópolis',1),(7,'Barueri',1);
 /*!40000 ALTER TABLE `tbl_cidade` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -207,7 +209,7 @@ CREATE TABLE `tbl_fale_conosco` (
   `celular` varchar(45) NOT NULL,
   `observacao` text NOT NULL,
   PRIMARY KEY (`id_fale`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -216,7 +218,7 @@ CREATE TABLE `tbl_fale_conosco` (
 
 LOCK TABLES `tbl_fale_conosco` WRITE;
 /*!40000 ALTER TABLE `tbl_fale_conosco` DISABLE KEYS */;
-INSERT INTO `tbl_fale_conosco` VALUES (1,'Nicolas Guarino Santana','guarino.nicolas.santana@gmail.com','(11) 97137-8841','awfawgfawgawgfawawdawdawdawfawf');
+INSERT INTO `tbl_fale_conosco` VALUES (1,'Nicolas Guarino Santana','guarino.nicolas.santana@gmail.com','(11) 97137-8841','awfawgfawgawgfawawdawdawdawfawf'),(2,'awdawd','guarino.nicolas.santana@gmail.com','(11) 9713-78841','awdawdawd'),(3,'AAAAAAAAAAAAAA','guarino.nicolas.santana@gmail.com','(11) 97137-8841','AAAAAAAAAAAAAAAAAAAAAA'),(4,'AAAAAAAAAAAAAA','berthorodrigues51@gmail.com','(11) 9713-78841','awdwagawga');
 /*!40000 ALTER TABLE `tbl_fale_conosco` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -238,7 +240,7 @@ CREATE TABLE `tbl_loja_fisica` (
   UNIQUE KEY `cnpj_loja_UNIQUE` (`cnpj_loja`),
   KEY `id_loja_cep_idx` (`id_cep`),
   CONSTRAINT `id_loja_cep` FOREIGN KEY (`id_cep`) REFERENCES `tbl_cep` (`id_cep`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -247,7 +249,7 @@ CREATE TABLE `tbl_loja_fisica` (
 
 LOCK TABLES `tbl_loja_fisica` WRITE;
 /*!40000 ALTER TABLE `tbl_loja_fisica` DISABLE KEYS */;
-INSERT INTO `tbl_loja_fisica` VALUES (1,1,'SmartGames','465.458.452-45','157','Proximo ao Centro de Reabilitação');
+INSERT INTO `tbl_loja_fisica` VALUES (1,1,'SmartGames','465.458.452-45','157','Proximo ao Centro de Reabilitação'),(2,2,'SmartStore','465.846.821-55','425','Perto Da escola CEI'),(4,3,'BarueriStore','452.658.612-65','325','Proximo');
 /*!40000 ALTER TABLE `tbl_loja_fisica` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -335,7 +337,7 @@ CREATE TABLE `tbl_produto` (
 
 LOCK TABLES `tbl_produto` WRITE;
 /*!40000 ALTER TABLE `tbl_produto` DISABLE KEYS */;
-INSERT INTO `tbl_produto` VALUES (1,'PS4 1TB Slim Glacier White CUH2106A (Sony)',1399.00,6,1,6,1,'ps4.png','Lorem Ipsum é simplesmente uma simulação de texto da indústria tipográfica e de impressos.',0),(2,'The Evil Whitin 2 - PS4',169.90,1,1,5,1,'the_evil_within2.jpg','Lorem Ipsum é simplesmente uma simulação de texto da indústria tipográfica e de impressos.',1),(3,'Call of Duty WWII - PS4 (Pré-venda)',199.90,1,1,5,1,'call_ps4.jpg','Lorem Ipsum é simplesmente uma simulação de texto da indústria tipográfica e de impressos.',1),(4,'Gran Turismo Sport - PS4',164.90,7,1,5,1,'gran_ps4.jpg','Lorem Ipsum é simplesmente uma simulação de texto da indústria tipográfica e de impressos.',1),(5,'Project Cars 2 - PS4',199.90,7,1,5,1,'project_ps4.jpg','Lorem Ipsum é simplesmente uma simulação de texto da indústria tipográfica e de impressos.',1),(6,'Xbox One S 500GB (Microsoft)',1279.90,5,1,6,2,'xbox_one_S.jpg','Lorem Ipsum é simplesmente uma simulação de texto da indústria tipográfica e de impressos.',0),(7,'Call of Duty WWII - Xbox One (Pré-venda)',199.90,1,1,5,2,'call_xbox.jpg','Lorem Ipsum é simplesmente uma simulação de texto da indústria tipográfica e de impressos.',1),(8,'Destiny 2 - Xbox One',179.90,1,1,5,2,'destiny_xbox.jpg','Lorem Ipsum é simplesmente uma simulação de texto da indústria tipográfica e de impressos.',0),(9,'FIFA 18 em Português - Xbox One',199.90,7,1,5,2,'fifa18_xbox.jpg','Lorem Ipsum é simplesmente uma simulação de texto da indústria tipográfica e de impressos.',0),(10,'Project Cars 2 - Xbox One',199.90,3,1,5,2,'project_xbox.jpg','Lorem Ipsum é simplesmente uma simulação de texto da indústria tipográfica e de impressos.',0),(11,'New Nintendo 2DS XL - Nintendo',849.90,4,1,6,3,'nintendo.jpg','Lorem Ipsum é simplesmente uma simulação de texto da indústria tipográfica e de impressos.',0),(12,'Kid Icarus Uprising - 3DS',199.90,4,1,5,3,'kid_nintendo.jpg','Lorem Ipsum é simplesmente uma simulação de texto da indústria tipográfica e de impressos.',11),(13,'Pokémon Y - 3DS',124.90,4,1,5,3,'pokemonY_nintendo.jpg','Lorem Ipsum é simplesmente uma simulação de texto da indústria tipográfica e de impressos.',0),(14,'Monster Hunter Generations - 3DS',229.90,4,1,5,3,'monsterGen.jpg','Lorem Ipsum é simplesmente uma simulação de texto da indústria tipográfica e de impressos.',0),(15,'Monster Hunter 3 Ultimate - 3DS',99.90,4,1,5,3,'monster3.jpg','Lorem Ipsum é simplesmente uma simulação de texto da indústria tipográfica e de impressos.',0),(16,'Pokémon Omega Ruby - 3DS',139.90,4,1,5,3,'pokeOmega.jpg','Lorem Ipsum é simplesmente uma simulação de texto da indústria tipográfica e de impressos.',1),(20,'Nintendo Switch 32GB Neon + Mario + Rabbids Kingdom Battle (Nintendo)',1799.90,4,1,6,4,'switch.png','Lorem Ipsum é simplesmente uma simulação de texto da indústria tipográfica e de impressos.',0),(21,'Rayman Legends Definitive Edition - Switch',199.90,4,1,5,4,'rayman.jpg','Lorem Ipsum é simplesmente uma simulação de texto da indústria tipográfica e de impressos.',1),(22,'FIFA 18 Em Português - Switch',249.90,7,1,5,4,'fifa18_switch.jpg','Lorem Ipsum é simplesmente uma simulação de texto da indústria tipográfica e de impressos.',0),(23,'Ultra Street Fighter II The Final Challengers - Switch',219.90,3,1,5,4,'street.jpg','Lorem Ipsum é simplesmente uma simulação de texto da indústria tipográfica e de impressos.',0),(24,'Dragon Ball Xenoverse 2 - Swich',219.90,4,1,5,4,'dragon.png','Lorem Ipsum é simplesmente uma simulação de texto da indústria tipográfica e de impressos.',0),(25,'Wiiu Deluxe 32GB Set Bundle Mario Kart 8',1299.90,4,1,6,5,'wiiu.jpg','Lorem Ipsum é simplesmente uma simulação de texto da indústria tipográfica e de impressos.',0),(26,'The Legend of Zelda Breath of the Wild - Wiiu',249.90,4,1,5,5,'zelda.jpg','Lorem Ipsum é simplesmente uma simulação de texto da indústria tipográfica e de impressos.',0),(27,'Super Mario Maker - Wiiu',239.90,4,1,5,5,'mario.png','Lorem Ipsum é simplesmente uma simulação de texto da indústria tipográfica e de impressos.',1),(28,'Nintendo Land - Wiiu',29.90,4,1,5,5,'land.jpg','Lorem Ipsum é simplesmente uma simulação de texto da indústria tipográfica e de impressos.',0),(29,'Pikimin 3 - Wiiu',99.90,4,1,5,5,'pikmin.jpg','Lorem Ipsum é simplesmente uma simulação de texto da indústria tipográfica e de impressos.',1);
+INSERT INTO `tbl_produto` VALUES (2,'The Evil Whitin 2 - PS4',169.90,1,2,5,1,'the_evil_within2.jpg','Lorem Ipsum é simplesmente uma simulação de texto da indústria tipográfica e de impressos.',1),(3,'Call of Duty WWII - PS4 (Pré-venda)',199.90,1,4,5,1,'call_ps4.jpg','Lorem Ipsum é simplesmente uma simulação de texto da indústria tipográfica e de impressos.',1),(4,'Gran Turismo Sport - PS4',164.90,7,2,5,1,'gran_ps4.jpg','Lorem Ipsum é simplesmente uma simulação de texto da indústria tipográfica e de impressos.',1),(5,'Project Cars 2 - PS4',199.90,7,1,5,1,'project_ps4.jpg','Lorem Ipsum é simplesmente uma simulação de texto da indústria tipográfica e de impressos.',1),(7,'Call of Duty WWII - Xbox One (Pré-venda)',199.90,1,2,5,2,'call_xbox.jpg','Lorem Ipsum é simplesmente uma simulação de texto da indústria tipográfica e de impressos.',1),(8,'Destiny 2 - Xbox One',179.90,1,4,5,2,'destiny_xbox.jpg','Lorem Ipsum é simplesmente uma simulação de texto da indústria tipográfica e de impressos.',0),(9,'FIFA 18 em Português - Xbox One',199.90,7,4,5,2,'fifa18_xbox.jpg','Lorem Ipsum é simplesmente uma simulação de texto da indústria tipográfica e de impressos.',0),(10,'Project Cars 2 - Xbox One',199.90,3,2,5,2,'project_xbox.jpg','Lorem Ipsum é simplesmente uma simulação de texto da indústria tipográfica e de impressos.',0),(12,'Kid Icarus Uprising - 3DS',199.90,4,2,5,3,'kid_nintendo.jpg','Lorem Ipsum é simplesmente uma simulação de texto da indústria tipográfica e de impressos.',11),(13,'Pokémon Y - 3DS',124.90,4,1,5,3,'pokemonY_nintendo.jpg','Lorem Ipsum é simplesmente uma simulação de texto da indústria tipográfica e de impressos.',0),(14,'Monster Hunter Generations - 3DS',229.90,4,4,5,3,'mosterGen.jpg','Lorem Ipsum é simplesmente uma simulação de texto da indústria tipográfica e de impressos.',0),(15,'Monster Hunter 3 Ultimate - 3DS',99.90,4,2,5,3,'monster3.jpg','Lorem Ipsum é simplesmente uma simulação de texto da indústria tipográfica e de impressos.',0),(16,'Pokémon Omega Ruby - 3DS',139.90,4,4,5,3,'pokeOmega.jpg','Lorem Ipsum é simplesmente uma simulação de texto da indústria tipográfica e de impressos.',1),(21,'Rayman Legends Definitive Edition - Switch',199.90,4,4,5,4,'rayman.jpg','Lorem Ipsum é simplesmente uma simulação de texto da indústria tipográfica e de impressos.',1),(22,'FIFA 18 Em Português - Switch',249.90,7,4,5,4,'fifa18_switch.jpg','Lorem Ipsum é simplesmente uma simulação de texto da indústria tipográfica e de impressos.',0),(23,'Ultra Street Fighter II The Final Challengers - Switch',219.90,3,2,5,4,'street.jpg','Lorem Ipsum é simplesmente uma simulação de texto da indústria tipográfica e de impressos.',0),(24,'Dragon Ball Xenoverse 2 - Swich',219.90,4,1,5,4,'dragon.png','Lorem Ipsum é simplesmente uma simulação de texto da indústria tipográfica e de impressos.',0),(26,'The Legend of Zelda Breath of the Wild - Wiiu',249.90,4,2,5,5,'zelda.jpg','Lorem Ipsum é simplesmente uma simulação de texto da indústria tipográfica e de impressos.',0),(27,'Super Mario Maker - Wiiu',239.90,4,2,5,5,'mario.png','Lorem Ipsum é simplesmente uma simulação de texto da indústria tipográfica e de impressos.',1),(28,'Nintendo Land - Wiiu',29.90,4,1,5,5,'land.jpg','Lorem Ipsum é simplesmente uma simulação de texto da indústria tipográfica e de impressos.',0),(29,'Pikimin 3 - Wiiu',99.90,4,4,5,5,'pikmin.jpg','Lorem Ipsum é simplesmente uma simulação de texto da indústria tipográfica e de impressos.',1);
 /*!40000 ALTER TABLE `tbl_produto` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -403,8 +405,12 @@ CREATE TABLE `tbl_usuario` (
   `dt_nasc` date NOT NULL,
   `senha_usuario` varchar(45) NOT NULL,
   `cpf_usuario` varchar(15) NOT NULL,
-  PRIMARY KEY (`id_usuario`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+  `id_tipo_produto` int(11) NOT NULL,
+  `login` varchar(45) NOT NULL,
+  PRIMARY KEY (`id_usuario`),
+  KEY `id_marca_preferida_tipo_produto_idx` (`id_tipo_produto`),
+  CONSTRAINT `id_preferido_tipo_produto` FOREIGN KEY (`id_tipo_produto`) REFERENCES `tbl_tipo_produto` (`id_tipo_produto`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -413,9 +419,52 @@ CREATE TABLE `tbl_usuario` (
 
 LOCK TABLES `tbl_usuario` WRITE;
 /*!40000 ALTER TABLE `tbl_usuario` DISABLE KEYS */;
-INSERT INTO `tbl_usuario` VALUES (1,'awdawd','wadawd@gmail.com','(12) 12312-4124','1212-12-12','41241214124','212.131.241-24'),(2,'Nicolas Guarino Santana','guarino.nicolas.santana@gmail.com','(11) 97137-8841','2000-07-24','123456','46595346850');
+INSERT INTO `tbl_usuario` VALUES (1,'awdawd','wadawd@gmail.com','(12) 12312-4124','1212-12-12','41241214124','212.131.241-24',2,'asfd'),(3,'Carlos','carlos@gamer.com','(11) 41414-1411','2000-07-24','123456','465.953.468-50',1,'CarlinhosSS'),(4,'Nicolas Guarino Santana','guarino.nicolas.santana@gmail.com','(11) 97137-8841','2000-07-24','123456','46595346850',2,'Nickzinhow');
 /*!40000 ALTER TABLE `tbl_usuario` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Temporary view structure for view `view_detalhes`
+--
+
+DROP TABLE IF EXISTS `view_detalhes`;
+/*!50001 DROP VIEW IF EXISTS `view_detalhes`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE VIEW `view_detalhes` AS SELECT 
+ 1 AS `id_produto`,
+ 1 AS `nome_produto`,
+ 1 AS `preco`,
+ 1 AS `id_marca_modelo`,
+ 1 AS `id_loja_fisica`,
+ 1 AS `id_categoria`,
+ 1 AS `id_tipo_produto`,
+ 1 AS `foto_produto`,
+ 1 AS `descricao`,
+ 1 AS `lancamento`,
+ 1 AS `marca_modelo`*/;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Temporary view structure for view `view_localizacao`
+--
+
+DROP TABLE IF EXISTS `view_localizacao`;
+/*!50001 DROP VIEW IF EXISTS `view_localizacao`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE VIEW `view_localizacao` AS SELECT 
+ 1 AS `id_produto`,
+ 1 AS `numero_loja`,
+ 1 AS `id_cep`,
+ 1 AS `cep`,
+ 1 AS `latitude`,
+ 1 AS `longitude`,
+ 1 AS `rua`,
+ 1 AS `nome_cidade`,
+ 1 AS `nome_estado`,
+ 1 AS `nome_pais`*/;
+SET character_set_client = @saved_cs_client;
 
 --
 -- Temporary view structure for view `view_produto_detalhes`
@@ -429,15 +478,33 @@ SET character_set_client = utf8;
  1 AS `id_produto`,
  1 AS `nome_produto`,
  1 AS `preco`,
+ 1 AS `foto_produto`,
  1 AS `descricao`,
  1 AS `marca_modelo`,
- 1 AS `foto_produto`,
  1 AS `nome_loja`,
  1 AS `numero_loja`,
- 1 AS `cep`,
  1 AS `rua`,
  1 AS `nome_cidade`,
  1 AS `nome_estado`*/;
+SET character_set_client = @saved_cs_client;
+
+--
+-- Temporary view structure for view `view_produtos`
+--
+
+DROP TABLE IF EXISTS `view_produtos`;
+/*!50001 DROP VIEW IF EXISTS `view_produtos`*/;
+SET @saved_cs_client     = @@character_set_client;
+SET character_set_client = utf8;
+/*!50001 CREATE VIEW `view_produtos` AS SELECT 
+ 1 AS `id_produto`,
+ 1 AS `foto_produto`,
+ 1 AS `nome_produto`,
+ 1 AS `preco`,
+ 1 AS `descricao`,
+ 1 AS `marca_modelo`,
+ 1 AS `nome_categoria`,
+ 1 AS `tipo_produto`*/;
 SET character_set_client = @saved_cs_client;
 
 --
@@ -475,6 +542,42 @@ SET character_set_client = @saved_cs_client;
 /*!50001 SET collation_connection      = @saved_col_connection */;
 
 --
+-- Final view structure for view `view_detalhes`
+--
+
+/*!50001 DROP VIEW IF EXISTS `view_detalhes`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8 */;
+/*!50001 SET character_set_results     = utf8 */;
+/*!50001 SET collation_connection      = utf8_general_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `view_detalhes` AS select `produto`.`id_produto` AS `id_produto`,`produto`.`nome_produto` AS `nome_produto`,`produto`.`preco` AS `preco`,`produto`.`id_marca_modelo` AS `id_marca_modelo`,`produto`.`id_loja_fisica` AS `id_loja_fisica`,`produto`.`id_categoria` AS `id_categoria`,`produto`.`id_tipo_produto` AS `id_tipo_produto`,`produto`.`foto_produto` AS `foto_produto`,`produto`.`descricao` AS `descricao`,`produto`.`lancamento` AS `lancamento`,`mc`.`marca_modelo` AS `marca_modelo` from ((`tbl_produto` `produto` join `tbl_usuario` `usuario` on((`usuario`.`id_tipo_produto` = `produto`.`id_tipo_produto`))) join `tbl_marca_modelo` `mc` on((`mc`.`id_marca_modelo` = `produto`.`id_marca_modelo`))) */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `view_localizacao`
+--
+
+/*!50001 DROP VIEW IF EXISTS `view_localizacao`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8 */;
+/*!50001 SET character_set_results     = utf8 */;
+/*!50001 SET collation_connection      = utf8_general_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `view_localizacao` AS select `produto`.`id_produto` AS `id_produto`,`loja_fisica`.`numero_loja` AS `numero_loja`,`loja_fisica`.`id_cep` AS `id_cep`,`cep`.`cep` AS `cep`,`cep`.`latitude` AS `latitude`,`cep`.`longitude` AS `longitude`,`cep`.`rua` AS `rua`,`cidade`.`nome_cidade` AS `nome_cidade`,`estado`.`nome_estado` AS `nome_estado`,`pais`.`nome_pais` AS `nome_pais` from (((((`tbl_loja_fisica` `loja_fisica` join `tbl_produto` `produto` on((`produto`.`id_loja_fisica` = `loja_fisica`.`id_loja_fisica`))) join `tbl_cep` `cep` on((`cep`.`id_cep` = `loja_fisica`.`id_cep`))) join `tbl_cidade` `cidade` on((`cidade`.`id_cidade` = `cep`.`id_cidade`))) join `tbl_estado` `estado` on((`estado`.`id_estado` = `cidade`.`id_estado`))) join `tbl_pais` `pais` on((`pais`.`id_pais` = `estado`.`id_pais`))) */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
 -- Final view structure for view `view_produto_detalhes`
 --
 
@@ -487,7 +590,25 @@ SET character_set_client = @saved_cs_client;
 /*!50001 SET collation_connection      = utf8_general_ci */;
 /*!50001 CREATE ALGORITHM=UNDEFINED */
 /*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
-/*!50001 VIEW `view_produto_detalhes` AS select `produto`.`id_produto` AS `id_produto`,`produto`.`nome_produto` AS `nome_produto`,`produto`.`preco` AS `preco`,`produto`.`descricao` AS `descricao`,`marcamodelo`.`marca_modelo` AS `marca_modelo`,`produto`.`foto_produto` AS `foto_produto`,`loja`.`nome_loja` AS `nome_loja`,`loja`.`numero_loja` AS `numero_loja`,`cep`.`cep` AS `cep`,`cep`.`rua` AS `rua`,`cidade`.`nome_cidade` AS `nome_cidade`,`estado`.`nome_estado` AS `nome_estado` from (((((`tbl_produto` `produto` join `tbl_marca_modelo` `marcamodelo` on((`produto`.`id_marca_modelo` = `marcamodelo`.`id_marca_modelo`))) join `tbl_loja_fisica` `loja` on((`loja`.`id_loja_fisica` = `produto`.`id_loja_fisica`))) join `tbl_cep` `cep` on((`cep`.`id_cep` = `loja`.`id_loja_fisica`))) join `tbl_cidade` `cidade` on((`cidade`.`id_cidade` = `cep`.`id_cidade`))) join `tbl_estado` `estado` on((`estado`.`id_estado` = `cidade`.`id_cidade`))) */;
+/*!50001 VIEW `view_produto_detalhes` AS select `produto`.`id_produto` AS `id_produto`,`produto`.`nome_produto` AS `nome_produto`,`produto`.`preco` AS `preco`,`produto`.`foto_produto` AS `foto_produto`,`produto`.`descricao` AS `descricao`,`mc`.`marca_modelo` AS `marca_modelo`,`lj_fisica`.`nome_loja` AS `nome_loja`,`lj_fisica`.`numero_loja` AS `numero_loja`,`cep`.`rua` AS `rua`,`cidade`.`nome_cidade` AS `nome_cidade`,`estado`.`nome_estado` AS `nome_estado` from (((((`tbl_produto` `produto` join `tbl_marca_modelo` `mc` on((`mc`.`id_marca_modelo` = `produto`.`id_marca_modelo`))) join `tbl_loja_fisica` `lj_fisica` on((`lj_fisica`.`id_loja_fisica` = `produto`.`id_loja_fisica`))) join `tbl_cep` `cep` on((`cep`.`id_cep` = `lj_fisica`.`id_cep`))) join `tbl_cidade` `cidade` on((`cidade`.`id_cidade` = `cep`.`id_cidade`))) join `tbl_estado` `estado` on((`estado`.`id_estado` = `cidade`.`id_estado`))) */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `view_produtos`
+--
+
+/*!50001 DROP VIEW IF EXISTS `view_produtos`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8 */;
+/*!50001 SET character_set_results     = utf8 */;
+/*!50001 SET collation_connection      = utf8_general_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `view_produtos` AS select `produto`.`id_produto` AS `id_produto`,`produto`.`foto_produto` AS `foto_produto`,`produto`.`nome_produto` AS `nome_produto`,`produto`.`preco` AS `preco`,`produto`.`descricao` AS `descricao`,`marcamodelo`.`marca_modelo` AS `marca_modelo`,`cat`.`nome_categoria` AS `nome_categoria`,`tipoproduto`.`tipo_produto` AS `tipo_produto` from (((`tbl_produto` `produto` join `tbl_marca_modelo` `marcamodelo` on((`marcamodelo`.`id_marca_modelo` = `produto`.`id_marca_modelo`))) join `tbl_categoria` `cat` on((`cat`.`id_categoria` = `produto`.`id_categoria`))) join `tbl_tipo_produto` `tipoproduto` on((`tipoproduto`.`id_tipo_produto` = `produto`.`id_tipo_produto`))) */;
 /*!50001 SET character_set_client      = @saved_cs_client */;
 /*!50001 SET character_set_results     = @saved_cs_results */;
 /*!50001 SET collation_connection      = @saved_col_connection */;
@@ -519,4 +640,4 @@ SET character_set_client = @saved_cs_client;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-10-26 11:21:34
+-- Dump completed on 2017-10-27 17:42:52

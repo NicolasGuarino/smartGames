@@ -58,7 +58,7 @@ public class HomeActivity extends AppCompatActivity
 
 
     TextView nome_cliente_nav, email_cliente_nav;
-    String nome_cliente, email_cliente;
+    String nome_cliente, email_cliente, id_cliente;
 
 
     ViewPager view_pager;
@@ -84,6 +84,8 @@ public class HomeActivity extends AppCompatActivity
         context = this;
 
         preferences = PreferenceManager.getDefaultSharedPreferences(this);
+
+        id_cliente = preferences.getString("id_usuario", "");
 
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -142,6 +144,7 @@ public class HomeActivity extends AppCompatActivity
         email_cliente = preferences.getString("email_usuario", "");
 
 
+
         email_cliente_nav.setText(email_cliente);
         nome_cliente_nav.setText(nome_cliente);
     }
@@ -188,7 +191,7 @@ public class HomeActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_inicio) {
-            // Handle the camera action
+
         } else if (id == R.id.nav_lancamentos) {
 
         } else if (id == R.id.nav_sair) {
@@ -231,7 +234,7 @@ public class HomeActivity extends AppCompatActivity
 
             url =  this.getString(R.string.link)+"listar_xbox_home.php";
 
-            parametros ="";
+            parametros = "id_usuario=" + id_cliente;
 
 
             new HomeActivity.Preencher_produtos().execute(url);
